@@ -50,6 +50,12 @@ dependencies {
     // Otto
     compile 'com.squareup:otto:1.3.5'
 
+    //volley
+    compile 'com.mcxiaoke.volley:library:1.0.+'
+
+    //gson
+    compile 'com.alibaba:fastjson:1.1.+'
+
     // Other jars (RootTools)
     compile fileTree(dir: 'libs', include: '*.jar')
 }

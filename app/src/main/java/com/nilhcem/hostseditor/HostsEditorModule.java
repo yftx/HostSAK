@@ -6,6 +6,7 @@ import com.nilhcem.hostseditor.task.RemoveHostsAsync;
 import com.nilhcem.hostseditor.task.ToggleHostsAsync;
 import com.nilhcem.hostseditor.ui.addedit.AddEditHostActivity;
 import com.nilhcem.hostseditor.ui.addedit.AddEditHostFragment;
+import com.nilhcem.hostseditor.ui.extend.MainActivity;
 import com.nilhcem.hostseditor.ui.list.ListHostsActivity;
 import com.nilhcem.hostseditor.ui.list.ListHostsFragment;
 import com.squareup.otto.Bus;
@@ -24,12 +25,15 @@ import dagger.Provides;
                 ListHostsAsync.class,
                 ListHostsFragment.class,
                 RemoveHostsAsync.class,
-                ToggleHostsAsync.class
+                ToggleHostsAsync.class,
+                MainActivity.class
         }
 )
 public class HostsEditorModule {
 
-    @Provides @Singleton Bus provideBus() {
+    @Provides
+    @Singleton
+    Bus provideBus() {
         return new Bus();
     }
 }
