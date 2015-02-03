@@ -48,7 +48,27 @@
 {"index":4,"host":"10.206.0.59 shop.snail.com"},
 {"index":4,"host":"10.206.0.59 10040.snail.com"},
 {"index":4,"host":"10.206.0.59 res.10040.snail.com"},
-{"index":4,"host":"10.206.0.59 static.10040.snail.com"}
+{"index":4,"host":"10.206.0.59 static.10040.snail.com"},
+{"index":5,"host":"10.17.0.22 m.api.woniu.com"},
+{"index":5,"host":"10.207.0.10 api.app.snail.com"},
+{"index":5,"host":"10.207.0.10 static.app.snail.com"},
+{"index":5,"host":"10.207.0.10 api.app1.snail.com"},
+{"index":5,"host":"10.207.0.10 static.app1.snail.com"},
+{"index":5,"host":"10.207.0.10 api.app2.snail.com"},
+{"index":5,"host":"10.207.0.10 static.app2.snail.com"},
+{"index":5,"host":"10.207.0.10 shop.snail.com"},
+{"index":5,"host":"10.207.0.10 10040.snail.com"},
+{"index":5,"host":"10.207.0.10 res.10040.snail.com"},
+{"index":5,"host":"10.207.0.10 static.10040.snail.com"},
+{"index":6,"host":"10.202.10.24 api.app.bfage.com"},
+{"index":6,"host":"10.17.0.22 m.api.bfage.com"},
+{"index":6,"host":"10.202.10.24 api.app.bfage.com"},
+{"index":6,"host":"10.202.10.24 static.app.bfage.com"},
+{"index":6,"host":"10.202.10.24 api.app1.bfage.com"},
+{"index":6,"host":"10.202.10.24 static.app1.bfage.com"},
+{"index":6,"host":"10.202.10.24 api.app2.bfage.com"},
+{"index":6,"host":"10.202.10.24 static.app2.bfage.com"},
+{"index":6,"host":"10.202.10.24 shop.bfage.com"}
 	]
 }
 
