@@ -6,8 +6,16 @@ import android.text.TextUtils;
 
 import com.nilhcem.hostseditor.core.util.InetAddresses;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import timber.log.Timber;
 
 public class Host implements Parcelable {
 
@@ -19,7 +27,7 @@ public class Host implements Parcelable {
     private String mIp;
     private String mHostName;
     private String mComment; // When host entry has a comment at the end, eg: "::1 localhost #myhome"
-    private boolean mIsCommented; // When host entry starts with #, eg: "#::1 localhost"
+    private boolean mIsCommented; //当前host是否已被注释  When host entry starts with #, eg: "#::1 localhost"
     private boolean mIsValid; // When host entry has a valid IP + hostname
 
     public Host(String ip, String hostName, String comment, boolean isCommented, boolean isValid) {
@@ -58,8 +66,9 @@ public class Host implements Parcelable {
         return mIsCommented;
     }
 
-    public void toggleComment() {
+    public Host toggleComment() {
         mIsCommented = !mIsCommented;
+        return this;
     }
 
     @Override
@@ -103,6 +112,23 @@ public class Host implements Parcelable {
         }
         return new Host(ip, hostname, comment, isCommented, isValid);
     }
+
+    public static List<Host> fromJson(JSONObject jsonObject) {
+        List<Host> hosts = new ArrayList<Host>();
+        try {
+            JSONArray array = jsonObject.getJSONArray("results");
+            for (int i = 0; i < array.length(); i++) {
+                hosts.add(Host.fromString(array.getJSONObject(i).getString("host")));
+            }
+            for (Host host : hosts)
+                Timber.d(host.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return hosts;
+    }
+
 
     public static final Parcelable.Creator<Host> CREATOR = new Parcelable.Creator<Host>() {
 
@@ -192,4 +218,6 @@ public class Host implements Parcelable {
         }
         return true;
     }
+
+
 }

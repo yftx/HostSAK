@@ -63,4 +63,14 @@
     <string name="about_text">This app lets you modify your /etc/hosts file on Android.\nYou might need to reboot to clear your DNS cache after any change.</string>
     <string name="about_author">2013 &#8211; 2015\n<a href="http://www.nilhcem.com">http://www.nilhcem.com</a></string>
     <string name="about_github_button">GitHub</string>
+
+    <string name="ok">替换</string>
+    <string name="cancel">取消</string>
+    <string name="warn_title">切换host</string>
+    <string name="warn_content">！！！！切换host会将本地已有host全部覆盖,覆盖了你别来找我啊。！！！</string>
+    <string name="replace_content">切换中，请勿操作</string>
+
+
+
+
 </resources>

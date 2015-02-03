@@ -90,6 +90,7 @@ public class HostsManager {
         }
 
         // Step 1: Create temporary hosts file in /data/data/project_package/files/hosts
+        //读取etc下host文件并写入temp file
         if (!createTempHostsFile(appContext)) {
             Timber.w("Can't create temporary hosts file");
             return false;

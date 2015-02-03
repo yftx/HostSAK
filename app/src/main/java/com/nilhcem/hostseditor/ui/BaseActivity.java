@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.nilhcem.hostseditor.HostsEditorApplication;
+import com.nilhcem.hostseditor.ui.extend.NetEngine;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
@@ -13,12 +14,16 @@ import javax.inject.Inject;
  */
 public abstract class BaseActivity extends SherlockFragmentActivity {
 
-    @Inject protected Bus mBus;
+    protected NetEngine engine;
+
+    @Inject
+    protected Bus mBus;
 
     @Override
     protected void onCreate(Bundle state) {
         super.onCreate(state);
         HostsEditorApplication.get(this).inject(this);
+        engine = new NetEngine(getApplicationContext());
     }
 
     @Override

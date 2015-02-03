@@ -3,6 +3,7 @@ package com.nilhcem.hostseditor;
 import com.nilhcem.hostseditor.task.AddEditHostAsync;
 import com.nilhcem.hostseditor.task.ListHostsAsync;
 import com.nilhcem.hostseditor.task.RemoveHostsAsync;
+import com.nilhcem.hostseditor.task.ReplaceHostAsync;
 import com.nilhcem.hostseditor.task.ToggleHostsAsync;
 import com.nilhcem.hostseditor.ui.addedit.AddEditHostActivity;
 import com.nilhcem.hostseditor.ui.addedit.AddEditHostFragment;
@@ -26,7 +27,8 @@ import dagger.Provides;
                 ListHostsFragment.class,
                 RemoveHostsAsync.class,
                 ToggleHostsAsync.class,
-                MainActivity.class
+                ReplaceHostAsync.class,
+                MainActivity.class,
         }
 )
 public class HostsEditorModule {
@@ -36,4 +38,6 @@ public class HostsEditorModule {
     Bus provideBus() {
         return new Bus();
     }
+
+
 }
