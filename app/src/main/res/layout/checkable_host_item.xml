@@ -18,7 +18,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="18dp"
         android:textIsSelectable="false"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:text="127.0.0.1"/>
 
     <!-- Middle part (hostname/comment) -->

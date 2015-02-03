@@ -1,0 +1,77 @@
+#127.0.0.1 localhost
+免商店
+
+#116封测服(测试环境)
+{"index":2,"host":"222.92.116.36 m.api.woniu.com"},
+{"index":2,"host":"222.92.116.36 security.woniu.com"},
+{"index":2,"host":"222.92.116.35 imprest.api.woniu.com"},
+{"index":2,"host":"116.213.130.66 api.app.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app.snail.com"},
+{"index":2,"host":"116.213.130.66 api.app1.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app1.snail.com"},
+{"index":2,"host":"116.213.130.66 api.app2.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app2.snail.com"},
+{"index":2,"host":"116.213.130.66 api.app3.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app3.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app4.snail.com"},
+{"index":2,"host":"116.213.130.66 api.app4.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app5.snail.com"},
+{"index":2,"host":"116.213.130.66 static.app5.snail.com"},
+{"index":2,"host":"116.213.130.66 wo.iuni.com.cn"},
+{"index":2,"host":"116.213.130.66 kuwan.snail.com"},
+{"index":2,"host":"116.213.130.66 mvne.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app1.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app2.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app3.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app4.snail.com"},
+{"index":2,"host":"116.213.130.66 dl.app5.snail.com"}
+
+---------------------
+
+#101体验服(灰度运营配置)
+{"index":3,"host":"101.226.250.82 api.app.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app.snail.com"},
+{"index":3,"host":"101.226.250.82 api.app1.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app1.snail.com"},
+{"index":3,"host":"101.226.250.82 api.app2.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app2.snail.com"},
+{"index":3,"host":"101.226.250.82 api.app3.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app3.snail.com"},
+{"index":3,"host":"101.226.250.82 api.app4.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app4.snail.com"},
+{"index":3,"host":"101.226.250.82 api.app5.snail.com"},
+{"index":3,"host":"101.226.250.82 static.app5.snail.com"}
+ 
+---------------------
+
+#59开发服-
+{"index":4,"host":"10.17.0.22 m.api.woniu.com"},
+{"index":4,"host":"10.206.0.59 api.app.snail.com"},
+{"index":4,"host":"10.206.0.59 static.app.snail.com"},
+{"index":4,"host":"10.206.0.59 api.app1.snail.com"},
+{"index":4,"host":"10.206.0.59 static.app1.snail.com"},
+{"index":4,"host":"10.206.0.59 api.app2.snail.com"},
+{"index":4,"host":"10.206.0.59 static.app2.snail.com"},
+{"index":4,"host":"10.206.0.59 shop.snail.com"},
+{"index":4,"host":"10.206.0.59 10040.snail.com"},
+{"index":4,"host":"10.206.0.59 res.10040.snail.com"},
+{"index":4,"host":"10.206.0.59 static.10040.snail.com"}
+
+---------------------
+#NQ
+{"index":1,"host":"10.206.0.59 api.queen.snail.com"},
+{"index":1,"host":"10.206.0.59 static.api.queen.com"}
+
+
+---------------------
+
+
+
+
+
+
+
+
+
+
