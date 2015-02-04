@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,7 +30,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import timber.log.Timber;
+import butterknife.OnItemClick;
 
 /**
  * Created by yftx on 2/1/15.
@@ -61,9 +60,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 datas = HostType.parse(jsonObject);
-                for (HostType type : datas) {
-                    Timber.d(type.toString());
-                }
                 refreshData();
             }
         });
@@ -72,17 +68,13 @@ public class MainActivity extends BaseActivity {
     private void refreshData() {
         mAdapter = new HostTypeAdapter(datas, getLayoutInflater());
         mList.setAdapter(mAdapter);
-        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mAdapter != null)
-                    changeHost(mAdapter.getItem(position));
-            }
-        });
         showContent();
     }
 
-    private void changeHost(final HostType hostType) {
+    @OnItemClick(R.id.list)
+    public void changeHost(int postion) {
+        if (mAdapter == null) return;
+        final HostType hostType = mAdapter.getItem(postion);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -168,24 +160,27 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view;
+        public View getView(int position, View view, ViewGroup parent) {
             ViewHolder holder;
-            if (convertView == null) {
-                view = inflater.inflate(R.layout.host_list_item, parent, false);
-                holder = new ViewHolder();
-                holder.hostType = (TextView) view.findViewById(R.id.host_type);
-                view.setTag(holder);
-            } else {
-                view = convertView;
+            if (view != null) {
                 holder = (ViewHolder) view.getTag();
+            } else {
+                view = inflater.inflate(R.layout.host_list_item, parent, false);
+                holder = new ViewHolder(view);
+                view.setTag(holder);
             }
+
             holder.hostType.setText(getItem(position).name);
             return view;
         }
+    }
 
-        class ViewHolder {
-            public TextView hostType;
+    static class ViewHolder {
+        public ViewHolder(View view) {
+            ButterKnife.inject(this, view);
         }
+
+        @InjectView(R.id.host_type)
+        TextView hostType;
     }
 }
