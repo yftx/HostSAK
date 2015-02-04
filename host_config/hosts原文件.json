@@ -89,8 +89,12 @@
 {"index":6,"host":"10.202.10.24 static.app1.bfage.com"},
 {"index":6,"host":"10.202.10.24 api.app2.bfage.com"},
 {"index":6,"host":"10.202.10.24 static.app2.bfage.com"},
-{"index":6,"host":"10.202.10.24 shop.bfage.com"}
+{"index":6,"host":"10.202.10.24 shop.bfage.com"},
+{"index":6,"host":"116.50.39.107 apibilling.tw.snail.com"}
 
+---------------------
+
+#Õ‚Õ¯ª∑æ≥
 {"index":7,"host":"127.0.0.1 localhost"}
 
 
