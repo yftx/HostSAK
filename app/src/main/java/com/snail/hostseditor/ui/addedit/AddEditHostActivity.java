@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.event.CreatedHostEvent;
@@ -42,7 +42,7 @@ public class AddEditHostActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.add_edit_menu, menu);
+        getMenuInflater().inflate(R.menu.add_edit_menu, menu);
         return true;
     }
 

@@ -3,17 +3,17 @@ package com.snail.hostseditor.ui.about;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.snail.hostseditor.R;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AboutDialogFragment extends SherlockDialogFragment {
+public class AboutDialogFragment extends DialogFragment {
 
     public static final String TAG = AboutDialogFragment.class.getSimpleName();
     private static final String GITHUB_URL = "https://github.com/Nilhcem/hosts-editor-android";

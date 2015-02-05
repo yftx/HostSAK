@@ -4,8 +4,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,10 +17,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
-import com.actionbarsherlock.view.ActionMode;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.event.LoadingEvent;
@@ -165,7 +165,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
     private void displayActionMode(int nbCheckedElements) {
         if (nbCheckedElements > 0) {
             if (mMode == null) {
-                mMode = mActivity.startActionMode(new ModeCallback());
+                mMode = mActivity.startSupportActionMode(new ModeCallback());
             }
 
             if (mEditMenuItem != null) {
@@ -181,7 +181,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            MenuInflater inflater = mActivity.getSupportMenuInflater();
+            MenuInflater inflater = mActivity.getMenuInflater();
             inflater.inflate(R.menu.list_contextual_actions, menu);
             return true;
         }

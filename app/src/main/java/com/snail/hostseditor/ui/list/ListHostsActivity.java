@@ -4,15 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.SearchView;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.event.LoadingEvent;
@@ -57,17 +58,16 @@ public class ListHostsActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.list_menu, menu);
-
+        getMenuInflater().inflate(R.menu.list_menu, menu);
         // Init search
         mSearchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) mSearchItem.getActionView();
+        SearchView searchView = (SearchView)MenuItemCompat.getActionView(mSearchItem);
         if (searchView != null) {
             searchView.setQueryHint(getString(R.string.action_search));
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    mSearchItem.collapseActionView();
+                    MenuItemCompat.collapseActionView(mSearchItem);
                     return true;
                 }
 

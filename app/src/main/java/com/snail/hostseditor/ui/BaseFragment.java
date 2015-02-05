@@ -2,9 +2,9 @@ package com.snail.hostseditor.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.snail.hostseditor.App;
 import com.squareup.otto.Bus;
 
@@ -13,22 +13,19 @@ import javax.inject.Inject;
 /**
  * All fragments should extend this for dependency injection.
  */
-public class BaseFragment extends SherlockFragment {
+public class BaseFragment extends Fragment {
 
-    @Inject protected Bus mBus;
+    @Inject
+    protected Bus mBus;
 
-    protected SherlockFragmentActivity mActivity;
+    protected ActionBarActivity mActivity;
     @Inject
     protected App mApp;
 
     @Override
     public void onAttach(Activity activity) {
-        if (!(activity instanceof SherlockFragmentActivity)) {
-            throw new UnsupportedOperationException("Activity must be a SherlockFragmentActivity");
-        }
-
         super.onAttach(activity);
-        mActivity = (SherlockFragmentActivity) activity;
+        mActivity = (ActionBarActivity) activity;
     }
 
     @Override
