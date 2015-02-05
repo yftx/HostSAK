@@ -8,18 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.android.volley.Response;
-import com.snail.hostseditor.App;
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.event.LoadHostTypeEvent;
+import com.snail.hostseditor.event.LoadHostsEvent;
 import com.snail.hostseditor.event.TaskCompletedEvent;
 import com.snail.hostseditor.task.GenericTaskAsync;
 import com.snail.hostseditor.task.ReplaceHostAsync;
 import com.snail.hostseditor.ui.BaseActivity;
 import com.snail.hostseditor.ui.list.ListHostsActivity;
 import com.squareup.otto.Subscribe;
-
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class MainActivity extends BaseActivity {
     @InjectView(android.R.id.empty)
     View mEmptyView;
 
-    List<HostType> datas;
+    List<HostType> mHostTypes;
     HostTypeAdapter mAdapter;
     ProgressDialog progressDialog;
 
@@ -48,21 +45,14 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.inject(this);
         showLoading();
-        requestData();
+        engine.getHostList();
     }
 
-    private void requestData() {
-        engine.getHostList(new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                datas = HostType.parse(jsonObject);
-                refreshData();
-            }
-        });
-    }
 
-    private void refreshData() {
-        mAdapter = new HostTypeAdapter(datas, getLayoutInflater());
+    @Subscribe
+    public void refreshData(LoadHostTypeEvent event) {
+        mHostTypes = event.hostTypes;
+        mAdapter = new HostTypeAdapter(mHostTypes, getLayoutInflater());
         mList.setAdapter(mAdapter);
         showContent();
     }
@@ -70,7 +60,10 @@ public class MainActivity extends BaseActivity {
     @OnItemClick(R.id.list)
     public void changeHost(int postion) {
         if (mAdapter == null) return;
-        final HostType hostType = mAdapter.getItem(postion);
+        showChangeHostDialog(mAdapter.getItem(postion));
+    }
+
+    private void showChangeHostDialog(final HostType hostType) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -78,10 +71,7 @@ public class MainActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-            }
-        });
+        builder.setNegativeButton(R.string.cancel,null);
         builder.setTitle(R.string.warn_title);
         builder.setMessage(R.string.warn_content);
         AlertDialog dialog = builder.create();
@@ -89,30 +79,29 @@ public class MainActivity extends BaseActivity {
     }
 
     private void replaceHost(HostType hostType) {
+        showProgressBar();
+        engine.getHost(hostType.index);
+    }
+
+    private void showProgressBar() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.replace_content));
         progressDialog.show();
         progressDialog.setCancelable(false);
-        engine.getHost(new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                List<Host> hosts = Host.fromJson(jsonObject);
-                replaceHost(hosts.toArray(new Host[hosts.size()]));
-            }
-        }, hostType.index);
     }
 
-    public void replaceHost(Host[] hosts) {
+    @Subscribe
+    public void replaceHost(LoadHostsEvent event) {
         GenericTaskAsync task = mApp.get(ReplaceHostAsync.class);
         task.init(getApplicationContext(), false);
-        task.execute(hosts);
+        task.execute(event.getHosts());
     }
 
     @Subscribe
     public void onTaskFinished(TaskCompletedEvent task) {
         if (progressDialog != null)
             progressDialog.dismiss();
-        showCurrenHost();
+        showCurrentHost();
     }
 
     private void showContent() {
@@ -126,7 +115,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.show_current_host)
-    public void showCurrenHost() {
+    public void showCurrentHost() {
         startActivity(new Intent(this, ListHostsActivity.class));
     }
 }

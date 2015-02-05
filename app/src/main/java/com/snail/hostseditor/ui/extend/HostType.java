@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by yftx on 2/2/15.
  */
@@ -21,7 +23,7 @@ public class HostType {
                 hostTypes.add(new HostType(name,index));
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Timber.e(e.getMessage());
         }
 
         return hostTypes;

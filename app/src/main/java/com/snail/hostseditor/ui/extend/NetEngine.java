@@ -8,12 +8,20 @@ import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.snail.hostseditor.App;
+import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.event.LoadHostTypeEvent;
+import com.snail.hostseditor.event.LoadHostsEvent;
+import com.squareup.otto.Bus;
 
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 import timber.log.Timber;
 
@@ -28,18 +36,38 @@ public class NetEngine {
     RequestQueue mRequestQueue;
     Error error = new Error();
 
+    @Inject
+    protected Bus mBus;
+
     public NetEngine(Context context) {
+        App.get(context).inject(this);
+        mBus.register(this);
         this.context = context;
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
-    public void getHostList(Response.Listener<JSONObject> listener) {
+    public void getHostList() {
+        Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                mBus.post(new LoadHostTypeEvent(HostType.parse(jsonObject)));
+            }
+        };
+
         Request request = new Request(Request.Method.GET, BASE_URL + HOST_TYPE, null, listener, error);
         request.setShouldCache(false);
         mRequestQueue.add(request);
     }
 
-    public void getHost(Response.Listener<JSONObject> listener, int index) {
+    public void getHost(int index) {
+        Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                List<Host> hosts = Host.fromJson(jsonObject);
+                mBus.post(new LoadHostsEvent(hosts));
+            }
+        };
+
         Request request = new Request(Request.Method.GET, BASE_URL + HOSTS + "?where=" + URLEncoder.encode("{\"index\":" + index + "}"), null, listener, error);
         request.setShouldCache(false);
         mRequestQueue.add(request);

@@ -8,6 +8,7 @@ import com.snail.hostseditor.task.ToggleHostsAsync;
 import com.snail.hostseditor.ui.addedit.AddEditHostActivity;
 import com.snail.hostseditor.ui.addedit.AddEditHostFragment;
 import com.snail.hostseditor.ui.extend.MainActivity;
+import com.snail.hostseditor.ui.extend.NetEngine;
 import com.snail.hostseditor.ui.list.ListHostsActivity;
 import com.snail.hostseditor.ui.list.ListHostsFragment;
 import com.squareup.otto.Bus;
@@ -29,6 +30,7 @@ import dagger.Provides;
                 ToggleHostsAsync.class,
                 ReplaceHostAsync.class,
                 MainActivity.class,
+                NetEngine.class
         },
         includes = {
                 NetModule.class,
