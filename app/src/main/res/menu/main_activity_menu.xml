@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/show_current_host"
+        android:icon="@drawable/ic_menu_show_current_host"
+        ap:showAsAction="ifRoom|withText"
+        android:title="@string/action_add_host"/>
+</menu>

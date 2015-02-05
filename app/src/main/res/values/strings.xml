@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Hosts Editor</string>
+    <string name="app_name">Snail Host</string>
 
     <!-- Action bar menu -->
-    <string name="action_search">Search</string>
-    <string name="action_search_results">Search results</string>
-    <string name="action_add_host">Add Host</string>
-    <string name="action_reload">Reload host entries</string>
-    <string name="action_select_all">Select all hosts</string>
-    <string name="action_about">About</string>
+    <string name="action_search">搜索</string>
+    <string name="action_search_results">搜索结果</string>
+    <string name="action_add_host">添加host</string>
+    <string name="action_show_current_host">显示当前的host</string>
+    <string name="action_reload">重新加载host文件</string>
+    <string name="action_select_all">选取所有host文件</string>
+    <string name="action_about">关于</string>
 
     <!-- Add/Edit host -->
-    <string name="add_host_title">Add Hostname</string>
+    <string name="add_host_title">添加host名字</string>
     <string name="edit_host_title">Edit Hostname</string>
     <string name="add_edit_ip">IP Address:</string>
     <string name="add_edit_name">Hostname:</string>
@@ -59,10 +60,9 @@
     <string name="loading_toggle_multiple">Toggling entries</string>
 
     <!-- About -->
-    <string name="about_title">About Hosts Editor</string>
-    <string name="about_text">This app lets you modify your /etc/hosts file on Android.\nYou might need to reboot to clear your DNS cache after any change.</string>
-    <string name="about_author">2013 &#8211; 2015\n<a href="http://www.nilhcem.com">http://www.nilhcem.com</a></string>
-    <string name="about_github_button">GitHub</string>
+    <string name="about_title">Snail Host</string>
+    <string name="about_text">快速修改host\n免商店开发团队出品</string>
+    <string name="about_author"><a href="http://app.snail.com">http://app.snail.com</a></string>
 
     <string name="ok">替换</string>
     <string name="cancel">取消</string>

@@ -35,8 +35,10 @@ public class ListHostsActivity extends BaseActivity {
     private static final String INSTANCE_STATE_LOADING_MESSAGE = "loadingMessage";
     private static final String INSTANCE_STATE_SEARCH = "search";
 
-    @InjectView(R.id.listLoading) ProgressBar mProgressBar;
-    @InjectView(R.id.listLoadingMsg) TextView mLoadingMsg;
+    @InjectView(R.id.listLoading)
+    ProgressBar mProgressBar;
+    @InjectView(R.id.listLoadingMsg)
+    TextView mLoadingMsg;
 
     private ListHostsFragment mFragment;
     private String mSearchQuery = STR_EMPTY;
@@ -61,7 +63,7 @@ public class ListHostsActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.list_menu, menu);
         // Init search
         mSearchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView)MenuItemCompat.getActionView(mSearchItem);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(mSearchItem);
         if (searchView != null) {
             searchView.setQueryHint(getString(R.string.action_search));
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -101,7 +103,7 @@ public class ListHostsActivity extends BaseActivity {
                 }
                 break;
             case KeyEvent.KEYCODE_SEARCH:
-                mSearchItem.expandActionView();
+                MenuItemCompat.expandActionView(mSearchItem);
                 return true;
         }
         return super.onKeyDown(keyCode, event);

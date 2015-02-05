@@ -22,16 +22,6 @@
             android:textSize="16sp"
             app:typeface="fonts/Roboto-Regular.ttf"/>
 
-        <!-- GitHub button -->
-        <com.snail.hostseditor.ui.widget.TypefacedButton
-            android:id="@+id/aboutGitHub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/about_github_button"
-            app:typeface="fonts/Roboto-Regular.ttf"/>
-
         <!-- Date - Author -->
         <com.snail.hostseditor.ui.widget.TypefacedTextView
             android:layout_width="match_parent"

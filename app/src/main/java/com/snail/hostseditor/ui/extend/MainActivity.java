@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
@@ -48,6 +50,21 @@ public class MainActivity extends BaseActivity {
         engine.getHostList();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.show_current_host:
+                showCurrentHost();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Subscribe
     public void refreshData(LoadHostTypeEvent event) {
@@ -71,7 +88,7 @@ public class MainActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton(R.string.cancel,null);
+        builder.setNegativeButton(R.string.cancel, null);
         builder.setTitle(R.string.warn_title);
         builder.setMessage(R.string.warn_content);
         AlertDialog dialog = builder.create();
@@ -114,7 +131,7 @@ public class MainActivity extends BaseActivity {
         mEmptyView.setVisibility(View.VISIBLE);
     }
 
-    @OnClick(R.id.show_current_host)
+//    @OnClick(R.id.show_current_host)
     public void showCurrentHost() {
         startActivity(new Intent(this, ListHostsActivity.class));
     }

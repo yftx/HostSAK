@@ -1,7 +1,5 @@
 package com.snail.hostseditor.ui.about;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -11,12 +9,10 @@ import android.view.ViewGroup;
 import com.snail.hostseditor.R;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AboutDialogFragment extends DialogFragment {
 
     public static final String TAG = AboutDialogFragment.class.getSimpleName();
-    private static final String GITHUB_URL = "https://github.com/Nilhcem/hosts-editor-android";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,11 +26,5 @@ public class AboutDialogFragment extends DialogFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-    }
-
-    @OnClick(R.id.aboutGitHub)
-    void openGitHubUrl() {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_URL));
-        startActivity(browserIntent);
     }
 }
