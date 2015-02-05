@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void replaceHost(Host[] hosts) {
-        GenericTaskAsync task = ((App) getApplication()).get(ReplaceHostAsync.class);
+        GenericTaskAsync task = mApp.get(ReplaceHostAsync.class);
         task.init(getApplicationContext(), false);
         task.execute(hosts);
     }

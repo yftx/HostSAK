@@ -18,6 +18,7 @@ public class BaseFragment extends SherlockFragment {
     @Inject protected Bus mBus;
 
     protected SherlockFragmentActivity mActivity;
+    @Inject
     protected App mApp;
 
     @Override
@@ -28,7 +29,6 @@ public class BaseFragment extends SherlockFragment {
 
         super.onAttach(activity);
         mActivity = (SherlockFragmentActivity) activity;
-        mApp = App.get(activity);
     }
 
     @Override

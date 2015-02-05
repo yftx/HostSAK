@@ -13,6 +13,8 @@ import javax.inject.Inject;
  * All activities should extend this for dependency injection.
  */
 public abstract class BaseActivity extends SherlockFragmentActivity {
+    @Inject
+    protected App mApp;
 
     @Inject
     protected NetEngine engine;
