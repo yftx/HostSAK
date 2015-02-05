@@ -4,6 +4,12 @@ import android.app.Application;
 import android.content.Context;
 
 import com.snail.hostseditor.core.logging.ReleaseLogTree;
+import com.snail.hostseditor.dagger.AndroidModule;
+import com.snail.hostseditor.dagger.HostsEditorModule;
+import com.snail.hostseditor.dagger.NetModule;
+
+import java.util.Arrays;
+import java.util.List;
 
 import dagger.ObjectGraph;
 import timber.log.Timber;
@@ -11,7 +17,7 @@ import timber.log.Timber;
 /**
  * Creates and provides access to Dagger's {@link ObjectGraph} instance.
  */
-public class HostsEditorApplication extends Application {
+public class App extends Application {
 
     private ObjectGraph mObjectGraph;
 
@@ -30,8 +36,8 @@ public class HostsEditorApplication extends Application {
         return mObjectGraph.get(type);
     }
 
-    public static HostsEditorApplication get(Context context) {
-        return (HostsEditorApplication) context.getApplicationContext();
+    public static App get(Context context) {
+        return (App) context.getApplicationContext();
     }
 
     private void initLogger() {
@@ -43,6 +49,14 @@ public class HostsEditorApplication extends Application {
     }
 
     private void buildObjectGraph() {
-        mObjectGraph = ObjectGraph.create(new HostsEditorModule());
+        mObjectGraph = ObjectGraph.create(getModules().toArray());
+    }
+
+    private List<Object> getModules() {
+        return Arrays.asList(
+                new AndroidModule(this),
+                new NetModule(),
+                new HostsEditorModule()
+        );
     }
 }

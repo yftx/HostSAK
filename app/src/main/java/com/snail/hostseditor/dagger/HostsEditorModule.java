@@ -1,4 +1,4 @@
-package com.snail.hostseditor;
+package com.snail.hostseditor.dagger;
 
 import com.snail.hostseditor.task.AddEditHostAsync;
 import com.snail.hostseditor.task.ListHostsAsync;
@@ -29,7 +29,13 @@ import dagger.Provides;
                 ToggleHostsAsync.class,
                 ReplaceHostAsync.class,
                 MainActivity.class,
+        },
+        includes = {
+                NetModule.class,
         }
+
+
+
 )
 public class HostsEditorModule {
 
@@ -38,6 +44,5 @@ public class HostsEditorModule {
     Bus provideBus() {
         return new Bus();
     }
-
 
 }

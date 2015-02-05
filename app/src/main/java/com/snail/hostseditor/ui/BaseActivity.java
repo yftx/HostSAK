@@ -3,7 +3,7 @@ package com.snail.hostseditor.ui;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.snail.hostseditor.HostsEditorApplication;
+import com.snail.hostseditor.App;
 import com.snail.hostseditor.ui.extend.NetEngine;
 import com.squareup.otto.Bus;
 
@@ -14,6 +14,7 @@ import javax.inject.Inject;
  */
 public abstract class BaseActivity extends SherlockFragmentActivity {
 
+    @Inject
     protected NetEngine engine;
 
     @Inject
@@ -22,8 +23,7 @@ public abstract class BaseActivity extends SherlockFragmentActivity {
     @Override
     protected void onCreate(Bundle state) {
         super.onCreate(state);
-        HostsEditorApplication.get(this).inject(this);
-        engine = new NetEngine(getApplicationContext());
+        App.get(this).inject(this);
     }
 
     @Override

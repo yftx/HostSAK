@@ -5,15 +5,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.Response;
-import com.snail.hostseditor.HostsEditorApplication;
+import com.snail.hostseditor.App;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.event.TaskCompletedEvent;
@@ -107,7 +103,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void replaceHost(Host[] hosts) {
-        GenericTaskAsync task = ((HostsEditorApplication) getApplication()).get(ReplaceHostAsync.class);
+        GenericTaskAsync task = ((App) getApplication()).get(ReplaceHostAsync.class);
         task.init(getApplicationContext(), false);
         task.execute(hosts);
     }
@@ -132,55 +128,5 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.show_current_host)
     public void showCurrenHost() {
         startActivity(new Intent(this, ListHostsActivity.class));
-    }
-
-    class HostTypeAdapter extends BaseAdapter {
-
-        List<HostType> datas;
-        LayoutInflater inflater;
-
-        HostTypeAdapter(List<HostType> datas, LayoutInflater inflater) {
-            this.datas = datas;
-            this.inflater = inflater;
-        }
-
-        @Override
-        public int getCount() {
-            return datas.size();
-        }
-
-        @Override
-        public HostType getItem(int position) {
-            return datas.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup parent) {
-            ViewHolder holder;
-            if (view != null) {
-                holder = (ViewHolder) view.getTag();
-            } else {
-                view = inflater.inflate(R.layout.host_list_item, parent, false);
-                holder = new ViewHolder(view);
-                view.setTag(holder);
-            }
-
-            holder.hostType.setText(getItem(position).name);
-            return view;
-        }
-    }
-
-    static class ViewHolder {
-        public ViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
-
-        @InjectView(R.id.host_type)
-        TextView hostType;
     }
 }

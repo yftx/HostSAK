@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.snail.hostseditor.HostsEditorApplication;
+import com.snail.hostseditor.App;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ public class BaseFragment extends SherlockFragment {
     @Inject protected Bus mBus;
 
     protected SherlockFragmentActivity mActivity;
-    protected HostsEditorApplication mApp;
+    protected App mApp;
 
     @Override
     public void onAttach(Activity activity) {
@@ -28,14 +28,14 @@ public class BaseFragment extends SherlockFragment {
 
         super.onAttach(activity);
         mActivity = (SherlockFragmentActivity) activity;
-        mApp = HostsEditorApplication.get(activity);
+        mApp = App.get(activity);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        HostsEditorApplication.get(mActivity).inject(this);
+        App.get(mActivity).inject(this);
     }
 
     @Override
