@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="BaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--控制actionbar的颜色-->
+        <item name="colorPrimary">@color/material_blue_500</item>
+        <!--控制通知栏的颜色-->
+        <item name="colorPrimaryDark">@color/material_blue_700</item>
+        <!--checkbox , text fields的颜色 -->
+        <item name="colorAccent">@color/material_green_A200</item>
     </style>
 </resources>
