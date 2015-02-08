@@ -1,9 +1,9 @@
 package com.snail.hostseditor.ui.extend;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.snail.hostseditor.R;
@@ -16,54 +16,52 @@ import butterknife.InjectView;
 /**
  * Created by yftx on 2/4/15.
  */
-public class HostTypeAdapter extends BaseAdapter {
-
+public class HostTypeAdapter extends RecyclerView.Adapter<HostTypeAdapter.ViewHolder> {
     List<HostType> datas;
     LayoutInflater inflater;
+    OnClickItemListener onClickItemListener;
 
-    HostTypeAdapter(List<HostType> datas, LayoutInflater inflater) {
+    HostTypeAdapter(List<HostType> datas, LayoutInflater inflater, OnClickItemListener onClickItemListener) {
         this.datas = datas;
         this.inflater = inflater;
+        this.onClickItemListener = onClickItemListener;
     }
 
-    @Override
-    public int getCount() {
-        return datas.size();
+    interface OnClickItemListener {
+        public void onClickItem(HostType hostType);
     }
 
-    @Override
-    public HostType getItem(int position) {
-        return datas.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        ViewHolder holder;
-        if (view != null) {
-            holder = (ViewHolder) view.getTag();
-        } else {
-            view = inflater.inflate(R.layout.host_list_item, parent, false);
-            holder = new ViewHolder(view);
-            view.setTag(holder);
-        }
-
-        holder.hostType.setText(getItem(position).name);
-        return view;
-    }
-
-
-    static class ViewHolder {
-        public ViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
-
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.host_type)
-        TextView hostType;
+        public TextView hostType;
+
+        public ViewHolder(View v) {
+            super(v);
+            ButterKnife.inject(this,v);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickItemListener.onClickItem(datas.get(getPosition()));
+                }
+            });
+        }
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.host_list_item, parent, false);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.hostType.setText(datas.get(position).name);
+    }
+
+    @Override
+    public int getItemCount() {
+        return datas.size();
     }
 }
 

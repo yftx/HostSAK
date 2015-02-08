@@ -7,4 +7,8 @@
     <!-- Add/Edit host -->
     <dimen name="add_edit_form_margin">20dp</dimen>
     <dimen name="add_edit_label_size">16sp</dimen>
+
+    <dimen name="common_list_height">48dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+
 </resources>

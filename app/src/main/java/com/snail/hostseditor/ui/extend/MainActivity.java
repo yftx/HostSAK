@@ -5,10 +5,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.event.LoadHostTypeEvent;
@@ -24,17 +25,17 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
 
 /**
  * Created by yftx on 2/1/15.
  */
 public class MainActivity extends BaseActivity {
     @InjectView(R.id.list)
-    ListView mList;
+    RecyclerView mList;
     @InjectView(android.R.id.empty)
     View mEmptyView;
+
+    private RecyclerView.LayoutManager mLayoutManager;
 
     List<HostType> mHostTypes;
     HostTypeAdapter mAdapter;
@@ -69,15 +70,22 @@ public class MainActivity extends BaseActivity {
     @Subscribe
     public void refreshData(LoadHostTypeEvent event) {
         mHostTypes = event.hostTypes;
-        mAdapter = new HostTypeAdapter(mHostTypes, getLayoutInflater());
+        mAdapter = new HostTypeAdapter(mHostTypes, getLayoutInflater(), new HostTypeAdapter.OnClickItemListener() {
+            @Override
+            public void onClickItem(HostType hostType) {
+                changeHost(hostType);
+            }
+        });
+        mLayoutManager = new LinearLayoutManager(this);
+        mList.setLayoutManager(mLayoutManager);
         mList.setAdapter(mAdapter);
         showContent();
     }
 
-    @OnItemClick(R.id.list)
-    public void changeHost(int postion) {
+
+    public void changeHost(HostType hostType) {
         if (mAdapter == null) return;
-        showChangeHostDialog(mAdapter.getItem(postion));
+        showChangeHostDialog(hostType);
     }
 
     private void showChangeHostDialog(final HostType hostType) {
@@ -131,7 +139,7 @@ public class MainActivity extends BaseActivity {
         mEmptyView.setVisibility(View.VISIBLE);
     }
 
-//    @OnClick(R.id.show_current_host)
+    //    @OnClick(R.id.show_current_host)
     public void showCurrentHost() {
         startActivity(new Intent(this, ListHostsActivity.class));
     }
