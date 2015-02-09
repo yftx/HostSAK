@@ -10,5 +10,7 @@
 
     <dimen name="common_list_height">48dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="outer_margin">16dp</dimen>
+    <dimen name="list_item_content_padding">8dp</dimen>
 
 </resources>
