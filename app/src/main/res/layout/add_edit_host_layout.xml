@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_action_add_dark"
+            android:drawableLeft="@drawable/ic_add_circle_white_48dp"
             android:drawablePadding="8dp"
             app:typeface="fonts/Roboto-Light.ttf"
             tools:text="@string/add_host_title"/>

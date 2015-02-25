@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ap="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <!-- Search -->
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_action_search"
-        ap:actionViewClass="android.support.v7.widget.SearchView"
-        ap:showAsAction="ifRoom|withText|collapseActionView"
+        android:icon="@drawable/ic_action_search_white_48dp"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom|withText|collapseActionView"
         android:title="@string/action_search"/>
 
     <!-- Add host -->
     <item
         android:id="@+id/action_add_host"
-        android:icon="@drawable/ic_action_add_dark"
-        ap:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_add_circle_white_48dp"
+        app:showAsAction="ifRoom|withText"
         android:title="@string/action_add_host"/>
 
     <!-- Reload -->
     <item
         android:id="@+id/action_reload_hosts"
-        android:icon="@drawable/ic_menu_refresh"
-        ap:showAsAction="never|withText"
+        android:icon="@drawable/ic_refresh_white_48dp"
+        app:showAsAction="never|withText"
         android:title="@string/action_reload"/>
 
     <!-- Select all -->
     <item
         android:id="@+id/action_select_all"
-        android:icon="@drawable/ic_menu_mark"
-        ap:showAsAction="never|withText"
+        android:icon="@drawable/ic_toggle_white_48dp"
+        app:showAsAction="never|withText"
         android:title="@string/action_select_all"/>
 
     <!-- About -->
     <item
         android:id="@+id/action_about"
-        android:icon="@drawable/ic_menu_info_details"
-        ap:showAsAction="never|withText"
+        android:icon="@drawable/ic_edit_white_48dp"
+        app:showAsAction="never|withText"
         android:title="@string/action_about"/>
 </menu>

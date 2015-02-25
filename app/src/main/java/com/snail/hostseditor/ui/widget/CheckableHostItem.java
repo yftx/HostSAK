@@ -24,13 +24,15 @@ import butterknife.InjectView;
  */
 public class CheckableHostItem extends RelativeLayout implements Checkable {
 
-    @InjectView(R.id.hostItemIp) TextView mIp;
-    @InjectView(R.id.hostItemHostname) TextView mHostname;
-    @InjectView(R.id.hostItemComment) TextView mComment;
-    @InjectView(R.id.hostItemCheckbox) InertCheckBox mCheckbox;
+    @InjectView(R.id.hostItemIp)
+    TextView mIp;
+    @InjectView(R.id.hostItemHostname)
+    TextView mHostname;
+    @InjectView(R.id.hostItemComment)
+    TextView mComment;
+    @InjectView(R.id.hostItemCheckbox)
+    InertCheckBox mCheckbox;
 
-    private int mTextColor;
-    private int mCommentColor;
 
     public CheckableHostItem(Context context) {
         super(context);
@@ -43,26 +45,15 @@ public class CheckableHostItem extends RelativeLayout implements Checkable {
         ButterKnife.inject(this, view);
 
         Resources res = context.getResources();
-        mTextColor = res.getColor(R.color.list_hosts_entry);
-        mCommentColor = res.getColor(R.color.list_hosts_comment);
     }
 
     public void init(Host host, int ipMinWidth, int ipMaxWidth) {
         String ip = String.format(Locale.US, "%s%s", (host.isCommented() ? Host.STR_COMMENT : ""), host.getIp());
 
-        int textColor;
-        if (host.isCommented()) {
-            textColor = mCommentColor;
-        } else {
-            textColor = mTextColor;
-        }
-
         mIp.setText(ip);
-        mIp.setTextColor(textColor);
         mIp.setMinimumWidth(ipMinWidth);
         mIp.setMaxWidth(ipMaxWidth);
         mHostname.setText(host.getHostName());
-        mHostname.setTextColor(textColor);
         mCheckbox.setChecked(false);
 
         String comment = host.getComment();
