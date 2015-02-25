@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="BaseStyle">
+    </style>
+
+
+    <!--<style name="CardItemStyle" parent="CardStyle">-->
+    <!--<item name="android:layout_width">match_parent</item>-->
+    <!--<item name="android:layout_height">@dimen/common_list_height</item>-->
+    <!--<item name="android:layout_marginLeft">@dimen/outer_margin</item>-->
+    <!--<item name="android:layout_marginTop">@dimen/outer_margin</item>-->
+    <!--<item name="android:layout_marginRight">@dimen/outer_margin</item>-->
+    <!--</style>-->
+
+    <style name="ListItemStyle" parent="CardStyle">
+        <item name="android:layout_height">@dimen/common_list_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/outer_margin</item>
+        <item name="android:layout_marginLeft">@dimen/outer_margin</item>
+        <item name="android:layout_marginRight">@dimen/outer_margin</item>
+    </style>
+
+
+</resources>

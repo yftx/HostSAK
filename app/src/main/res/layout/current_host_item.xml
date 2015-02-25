@@ -1,44 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.snail.hostseditor.ui.widget.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/ListItemStyle"
+    android:layout_height="@dimen/current_host_item_height">
 
-    <!-- Left part (IP) -->
-    <TextView
-        android:id="@+id/hostItemIp"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        android:textIsSelectable="false"
-        android:textSize="14sp"
-        tools:text="127.0.0.1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/left_scope"
+        android:layout_marginLeft="@dimen/list_item_content_padding"
+        android:minWidth="200dp"
+        >
+        <!-- Left part (IP) -->
+        <TextView
+            android:id="@+id/hostItemIp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textIsSelectable="false"
+            android:textSize="14sp"
+            tools:text="127.0.0.1" />
 
 
-    <!-- Hostname -->
-    <TextView
-        android:id="@+id/hostItemHostname"
-        android:layout_below="@id/hostItemIp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        android:textIsSelectable="false"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        tools:text="localhost" />
+        <!-- Hostname -->
+        <TextView
+            android:id="@+id/hostItemHostname"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            tools:text="localhost" />
+
+    </LinearLayout>
 
     <!-- Comment -->
     <TextView
         android:id="@+id/hostItemComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:focusable="false"
         android:textSize="12sp"
         android:visibility="gone"
         tools:text="#comment"
-        tools:visibility="visible"
-        android:layout_centerInParent="true"
-        />
+        tools:visibility="visible" />
 
     <!-- Right part (checkbox) -->
     <com.snail.hostseditor.ui.widget.InertCheckBox
