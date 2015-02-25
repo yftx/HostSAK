@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="com.snail.hostseditor.ui.list.ListHostsActivity" />
-        <activity android:name="com.snail.hostseditor.ui.extend.MainActivity"
-            android:theme="@style/AppTheme"
-            >
+        <activity
+            android:name="com.snail.hostseditor.ui.extend.MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

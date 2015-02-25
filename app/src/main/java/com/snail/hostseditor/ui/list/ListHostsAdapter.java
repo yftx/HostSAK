@@ -1,34 +1,31 @@
 package com.snail.hostseditor.ui.list;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
-import com.snail.hostseditor.core.util.Compatibility;
 import com.snail.hostseditor.core.util.ThreadPreconditions;
-import com.snail.hostseditor.ui.widget.CheckableHostItem;
+import com.snail.hostseditor.ui.widget.CheckableRelativeLayout;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import timber.log.Timber;
-
 class ListHostsAdapter extends BaseAdapter implements Filterable {
 
-    @Inject ListHostsSearchFilter mSearchFilter;
+    @Inject
+    ListHostsSearchFilter mSearchFilter;
 
     private List<Host> mHosts = Collections.emptyList();
     private Context mAppContext;
 
-    private int mIpMinWidth;
-    private int mIpMaxWidth;
 
     public void init(Context appContext) {
         mAppContext = appContext;
@@ -42,38 +39,6 @@ class ListHostsAdapter extends BaseAdapter implements Filterable {
             mHosts = hosts;
         }
         notifyDataSetChanged();
-    }
-
-    public void computeViewWidths(Context context) {
-        // The IP column can be very large, especially when it holds ipv6 with 39 chars.
-        // Its size has to be generated programmatically, as it should fit with the device's width.
-        // A tablet can afford having a large column but not a phone.
-
-        int screenWidth = Compatibility.getScreenDimensions(context).x;
-        Timber.d("Screen width: %d", screenWidth);
-
-        // Step 1: Compute minimum width.
-        // Min width must be between [100dp, 160dp]. If possible, 30% of screen width.
-        int minWidth = screenWidth * 30 / 100;
-        int minRange = Compatibility.convertDpToIntPixel(100f, context);
-        int maxRange = Compatibility.convertDpToIntPixel(160f, context);
-
-        if (minWidth < minRange) {
-            minWidth = minRange;
-        }
-        if (minWidth > maxRange) {
-            minWidth = maxRange;
-        }
-
-        // Step 2: Compute maximum width, usually 35% of screen width.
-        int maxWidth = screenWidth * 35 / 100;
-        if (maxWidth < minWidth) {
-            maxWidth = minWidth;
-        }
-
-        Timber.d("Min width: %d - Max width: %d", minWidth, maxWidth);
-        mIpMinWidth = minWidth;
-        mIpMaxWidth = maxWidth;
     }
 
     @Override
@@ -94,12 +59,11 @@ class ListHostsAdapter extends BaseAdapter implements Filterable {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = new CheckableHostItem(mAppContext);
-            convertView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+            convertView = LayoutInflater.from(mAppContext).inflate(R.layout.current_host_item, parent, false);
         }
 
         Host host = getItem(position);
-        ((CheckableHostItem) convertView).init(host, mIpMinWidth, mIpMaxWidth);
+        ((CheckableRelativeLayout) convertView).drawItem(host);
         return convertView;
     }
 

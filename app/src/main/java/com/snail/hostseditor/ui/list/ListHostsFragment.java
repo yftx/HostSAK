@@ -75,8 +75,6 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
             mListView.setEmptyView(emptyLayout);
         }
 
-        mAdapter.computeViewWidths(mActivity);
-
         if (firstCall) {
             refreshHosts(false);
         }

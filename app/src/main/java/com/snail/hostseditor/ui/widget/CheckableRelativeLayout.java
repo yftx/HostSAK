@@ -3,6 +3,7 @@ package com.snail.hostseditor.ui.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Checkable;
@@ -22,7 +23,7 @@ import butterknife.InjectView;
  *
  * @see "http://www.marvinlabs.com/2010/10/29/custom-listview-ability-check-items/"
  */
-public class CheckableHostItem extends RelativeLayout implements Checkable {
+public class CheckableRelativeLayout extends RelativeLayout implements Checkable {
 
     @InjectView(R.id.hostItemIp)
     TextView mIp;
@@ -34,25 +35,28 @@ public class CheckableHostItem extends RelativeLayout implements Checkable {
     InertCheckBox mCheckbox;
 
 
-    public CheckableHostItem(Context context) {
+    public CheckableRelativeLayout(Context context) {
         super(context);
-        initLayout(context);
     }
 
-    private void initLayout(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.checkable_host_item, this, true);
-        ButterKnife.inject(this, view);
-
-        Resources res = context.getResources();
+    public CheckableRelativeLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    public void init(Host host, int ipMinWidth, int ipMaxWidth) {
+    public CheckableRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        ButterKnife.inject(this);
+    }
+
+    public void drawItem(Host host) {
         String ip = String.format(Locale.US, "%s%s", (host.isCommented() ? Host.STR_COMMENT : ""), host.getIp());
 
         mIp.setText(ip);
-        mIp.setMinimumWidth(ipMinWidth);
-        mIp.setMaxWidth(ipMaxWidth);
         mHostname.setText(host.getHostName());
         mCheckbox.setChecked(false);
 
