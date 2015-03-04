@@ -15,7 +15,7 @@
 {"index":2,"host":"116.213.130.66 static.app3.snail.com"},
 {"index":2,"host":"116.213.130.66 static.app4.snail.com"},
 {"index":2,"host":"116.213.130.66 api.app4.snail.com"},
-{"index":2,"host":"116.213.130.66 static.app5.snail.com"},
+{"index":2,"host":"116.213.130.66 api.app5.snail.com"},
 {"index":2,"host":"116.213.130.66 static.app5.snail.com"},
 {"index":2,"host":"116.213.130.66 wo.iuni.com.cn"},
 {"index":2,"host":"116.213.130.66 kuwan.snail.com"},
@@ -96,6 +96,20 @@
 
 #外网环境
 {"index":7,"host":"127.0.0.1 localhost"}
+
+#101体验服(灰度运营配置)
+{"index":8,"host":"140.207.233.24 api.app.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app.snail.com"},
+{"index":8,"host":"140.207.233.24 api.app1.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app1.snail.com"},
+{"index":8,"host":"140.207.233.24 api.app2.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app2.snail.com"},
+{"index":8,"host":"140.207.233.24 api.app3.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app3.snail.com"},
+{"index":8,"host":"140.207.233.24 api.app4.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app4.snail.com"},
+{"index":8,"host":"140.207.233.24 api.app5.snail.com"},
+{"index":8,"host":"140.207.233.24 static.app5.snail.com"}
 
 
 
