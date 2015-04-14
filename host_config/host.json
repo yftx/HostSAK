@@ -70,19 +70,7 @@
 {"index":6,"host":"10.202.10.24 static.app2.bfage.com"},
 {"index":6,"host":"116.50.39.107 apibilling.tw.snail.com"},
 {"index":6,"host":"10.202.10.24 shop.bfage.com"},
-{"index":7,"host":"127.0.0.1 localhost"},
-{"index":8,"host":"140.207.233.24 api.app.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app.snail.com"},
-{"index":8,"host":"140.207.233.24 api.app1.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app1.snail.com"},
-{"index":8,"host":"140.207.233.24 api.app2.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app2.snail.com"},
-{"index":8,"host":"140.207.233.24 api.app3.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app3.snail.com"},
-{"index":8,"host":"140.207.233.24 api.app4.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app4.snail.com"},
-{"index":8,"host":"140.207.233.24 api.app5.snail.com"},
-{"index":8,"host":"140.207.233.24 static.app5.snail.com"}
+{"index":7,"host":"127.0.0.1 localhost"}
 
 	]
 }
