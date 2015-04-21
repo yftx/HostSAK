@@ -5,12 +5,19 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.2.0-beta2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
     }
 }
+
 
 allprojects {
     repositories {
         jcenter()
+        maven {
+            // For icepick
+            url 'https://clojars.org/repo/'
+        }
     }
 }
+

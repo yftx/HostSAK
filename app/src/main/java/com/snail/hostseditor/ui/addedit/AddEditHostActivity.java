@@ -33,7 +33,7 @@ public class AddEditHostActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         mFragment = (AddEditHostFragment) fm.findFragmentByTag(AddEditHostFragment.TAG);
         if (mFragment == null) {
-            mFragment = AddEditHostFragment.newInstance(hostToEdit);
+            mFragment = new AddEditHostFragmentBuilder(hostToEdit).build();
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(android.R.id.content, mFragment, AddEditHostFragment.TAG);
             ft.commit();

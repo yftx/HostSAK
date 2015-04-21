@@ -4,13 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.core.util.InetAddresses;
@@ -19,7 +18,6 @@ import com.snail.hostseditor.ui.BaseFragment;
 
 import java.util.regex.Pattern;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -30,14 +28,20 @@ public class AddEditHostFragment extends BaseFragment {
     private static final String ARG_HOST = "mInitialHost";
     private static final Pattern HOSTNAME_INVALID_CHARS_PATTERN = Pattern.compile("^.*[#'\",\\\\]+.*$");
 
-    private Host mInitialHost; // "edit mode" only - null for "add mode"
+    @Arg
+    Host mInitialHost; // "edit mode" only - null for "add mode"
     private AlertDialog mErrorAlert;
 
-    @InjectView(R.id.addEditHostIp) EditText mIp;
-    @InjectView(R.id.addEditHostName) EditText mHostName;
-    @InjectView(R.id.addEditComment) EditText mComment;
-    @InjectView(R.id.addEditCommentLabel) TextView mCommentLabel;
-    @InjectView(R.id.addEditHostButton) Button mButton;
+    @InjectView(R.id.addEditHostIp)
+    EditText mIp;
+    @InjectView(R.id.addEditHostName)
+    EditText mHostName;
+    @InjectView(R.id.addEditComment)
+    EditText mComment;
+    @InjectView(R.id.addEditCommentLabel)
+    TextView mCommentLabel;
+    @InjectView(R.id.addEditHostButton)
+    Button mButton;
 
     public static AddEditHostFragment newInstance(Host hostToEdit) {
         AddEditHostFragment fragment = new AddEditHostFragment();
@@ -60,10 +64,13 @@ public class AddEditHostFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_edit_host_layout, container, false);
-        ButterKnife.inject(this, view);
+    protected int getLayoutRes() {
+        return R.layout.add_edit_host_layout;
+    }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         if (mInitialHost == null) {
             mButton.setText(R.string.add_host_title);
         } else {
@@ -77,7 +84,6 @@ public class AddEditHostFragment extends BaseFragment {
                 toggleCommentVisibility();
             }
         }
-        return view;
     }
 
     @Override
@@ -86,12 +92,6 @@ public class AddEditHostFragment extends BaseFragment {
             mErrorAlert.dismiss();
         }
         super.onStop();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
     }
 
     @OnClick(R.id.addEditHostButton)

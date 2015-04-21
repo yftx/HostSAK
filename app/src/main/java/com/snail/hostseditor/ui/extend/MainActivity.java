@@ -23,7 +23,6 @@ import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
@@ -46,7 +45,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle state) {
         super.onCreate(state);
         setContentView(R.layout.main_activity);
-        ButterKnife.inject(this);
         showLoading();
         engine.getHostList();
     }
@@ -117,7 +115,8 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void replaceHost(LoadHostsEvent event) {
-        GenericTaskAsync task = mApp.get(ReplaceHostAsync.class);
+        GenericTaskAsync task = objectGraph.get(ReplaceHostAsync.class);
+
         task.init(getApplicationContext(), false);
         task.execute(event.getHosts());
     }

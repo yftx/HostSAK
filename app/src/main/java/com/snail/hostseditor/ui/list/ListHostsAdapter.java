@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-class ListHostsAdapter extends BaseAdapter implements Filterable {
+public class ListHostsAdapter extends BaseAdapter implements Filterable {
 
     @Inject
     ListHostsSearchFilter mSearchFilter;

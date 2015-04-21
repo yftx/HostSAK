@@ -3,6 +3,7 @@ package com.snail.hostseditor;
 import android.app.Application;
 import android.content.Context;
 
+import com.hannesdorfmann.mosby.dagger1.Injector;
 import com.snail.hostseditor.core.logging.ReleaseLogTree;
 import com.snail.hostseditor.dagger.AndroidModule;
 import com.snail.hostseditor.dagger.HostsEditorModule;
@@ -17,23 +18,20 @@ import timber.log.Timber;
 /**
  * Creates and provides access to Dagger's {@link ObjectGraph} instance.
  */
-public class App extends Application {
+public class App extends Application implements Injector{
 
     private ObjectGraph mObjectGraph;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        initLogger();
         buildObjectGraph();
+        initLogger();
     }
 
+    //非activity注入对象
     public void inject(Object target) {
         mObjectGraph.inject(target);
-    }
-
-    public <T> T get(Class<T> type) {
-        return mObjectGraph.get(type);
     }
 
     public static App get(Context context) {
@@ -58,5 +56,10 @@ public class App extends Application {
                 new NetModule(),
                 new HostsEditorModule()
         );
+    }
+
+    @Override
+    public ObjectGraph getObjectGraph() {
+        return mObjectGraph;
     }
 }

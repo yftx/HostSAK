@@ -6,12 +6,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.view.ActionMode;
 import android.util.SparseBooleanArray;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -37,32 +35,24 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
 public class ListHostsFragment extends BaseFragment implements OnItemClickListener, OnItemLongClickListener {
 
-    @Inject ListHostsAdapter mAdapter;
-    @InjectView(R.id.listHosts) ListView mListView;
+    @Inject
+    ListHostsAdapter mAdapter;
+    @InjectView(R.id.listHosts)
+    ListView mListView;
 
     private ActionMode mMode;
     private MenuItem mEditMenuItem;
     private Dialog mDisplayedDialog;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mAdapter.init(mActivity.getApplicationContext());
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        boolean firstCall = (mListView == null);
-
-        View view = inflater.inflate(R.layout.list_hosts_fragment, container, false);
-        ButterKnife.inject(this, view);
-
         mListView.setAdapter(mAdapter);
         mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         mListView.setFastScrollEnabled(true);
@@ -74,11 +64,12 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
         if (emptyLayout != null) {
             mListView.setEmptyView(emptyLayout);
         }
+        refreshHosts(false);
+    }
 
-        if (firstCall) {
-            refreshHosts(false);
-        }
-        return view;
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.list_hosts_fragment;
     }
 
     @Override
@@ -89,12 +80,6 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
             mDisplayedDialog = null;
         }
         super.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
     }
 
     @Override
@@ -142,7 +127,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
     }
 
     public void refreshHosts(boolean forceRefresh) {
-        mApp.get(ListHostsAsync.class).execute(forceRefresh);
+        objectGraph.get(ListHostsAsync.class).execute(forceRefresh);
     }
 
     public void selectAll() {
@@ -280,7 +265,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
     }
 
     private void runGenericTask(Class<? extends GenericTaskAsync> clazz, Host[] hosts, boolean flagMsg) {
-        GenericTaskAsync task = mApp.get(clazz);
+        GenericTaskAsync task = objectGraph.get(clazz);
         task.init(mActivity.getApplicationContext(), flagMsg);
         task.execute(hosts);
     }

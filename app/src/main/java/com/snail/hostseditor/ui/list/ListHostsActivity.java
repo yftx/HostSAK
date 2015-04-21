@@ -23,7 +23,6 @@ import com.snail.hostseditor.ui.about.AboutDialogFragment;
 import com.snail.hostseditor.ui.addedit.AddEditHostActivity;
 import com.squareup.otto.Subscribe;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import timber.log.Timber;
 
@@ -48,7 +47,6 @@ public class ListHostsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_hosts_layout);
-        ButterKnife.inject(this);
 
         FragmentManager fm = getSupportFragmentManager();
         mFragment = (ListHostsFragment) fm.findFragmentById(R.id.listHostsFragment);
@@ -57,6 +55,9 @@ public class ListHostsActivity extends BaseActivity {
             onLoadingEvent(new LoadingEvent(true, R.string.loading_hosts));
         }
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
