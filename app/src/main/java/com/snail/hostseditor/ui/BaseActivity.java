@@ -1,9 +1,7 @@
 package com.snail.hostseditor.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 
-import com.hannesdorfmann.mosby.MosbyActivity;
 import com.hannesdorfmann.mosby.dagger1.Dagger1MosbyActivity;
 import com.snail.hostseditor.App;
 import com.snail.hostseditor.ui.extend.NetEngine;

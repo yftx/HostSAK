@@ -1,4 +1,9 @@
-package com.snail.hostseditor.ui.extend;
+package com.snail.hostseditor.model;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.hannesdorfmann.parcelableplease.annotation.ParcelablePlease;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,7 +17,8 @@ import timber.log.Timber;
 /**
  * Created by yftx on 2/2/15.
  */
-public class HostType {
+@ParcelablePlease
+public class HostType implements Parcelable{
     public static List<HostType> parse(JSONObject json) {
         List<HostType> hostTypes = new ArrayList<HostType>();
         try {
@@ -43,6 +49,16 @@ public class HostType {
                 "name='" + name + '\'' +
                 ", index=" + index +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        HostTypeParcelablePlease.writeToParcel(this, dest, flags);
     }
 }
 

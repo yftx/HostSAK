@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.snail.hostseditor"
-    android:installLocation="auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:installLocation="auto">
 
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-sdk tools:overrideLibrary="com.hannesdorfmann.mosby,com.hannesdorfmann.mosby.dagger1" />
+    <uses-sdk tools:overrideLibrary="
+    com.hannesdorfmann.mosby,
+    com.hannesdorfmann.mosby.dagger1,
+    com.hannesdorfmann.mosby.dagger1.mvp,
+    com.hannesdorfmann.parcelableplease,
+    com.hannesdorfmann.mosby.mvp,
+    com.hannesdorfmann.mosby.dagger1.viewstate
+    com.hannesdorfmann.mosby.viewstate"
+
+        />
 
     <application
         android:name=".App"
@@ -20,7 +29,7 @@
             android:name="com.snail.hostseditor.ui.list.ListHostsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.snail.hostseditor.ui.extend.MainActivity"
+            android:name=".pannel.PannelActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,6 +12,7 @@ import com.snail.hostseditor.App;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.event.LoadHostTypeEvent;
 import com.snail.hostseditor.event.LoadHostsEvent;
+import com.snail.hostseditor.model.HostType;
 import com.squareup.otto.Bus;
 
 import org.json.JSONObject;
@@ -46,7 +47,7 @@ public class NetEngine {
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
-    public void getHostList() {
+    public void getHostTypes() {
         Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {

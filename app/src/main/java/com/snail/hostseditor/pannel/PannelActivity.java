@@ -1,35 +1,35 @@
-package com.snail.hostseditor.ui.extend;
+package com.snail.hostseditor.pannel;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.v4.app.Fragment;
 
-import com.snail.hostseditor.R;
-import com.snail.hostseditor.event.LoadHostTypeEvent;
-import com.snail.hostseditor.event.LoadHostsEvent;
-import com.snail.hostseditor.event.TaskCompletedEvent;
-import com.snail.hostseditor.task.GenericTaskAsync;
-import com.snail.hostseditor.task.ReplaceHostAsync;
-import com.snail.hostseditor.ui.BaseActivity;
-import com.snail.hostseditor.ui.list.ListHostsActivity;
-import com.squareup.otto.Subscribe;
+import com.hannesdorfmann.mosby.MosbyActivity;
+import com.hannesdorfmann.mosby.dagger1.Dagger1MosbyActivity;
 
-import java.util.List;
-
-import butterknife.InjectView;
+import javax.inject.Inject;
 
 /**
  * Created by yftx on 2/1/15.
  */
-public class MainActivity extends BaseActivity {
-    @InjectView(R.id.list)
+public class PannelActivity extends Dagger1MosbyActivity {
+    public static final String PANNEL_FRAGMENT_TAG = "pannel_fragment_tag";
+
+    Fragment mPannelFragment;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPannelFragment = getSupportFragmentManager().findFragmentByTag(PANNEL_FRAGMENT_TAG);
+        if (mPannelFragment == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(android.R.id.content, new PannelFragment(), PANNEL_FRAGMENT_TAG)
+                    .commit();
+        }
+
+
+    }
+    /*    @InjectView(R.id.list)
     RecyclerView mList;
     @InjectView(android.R.id.empty)
     View mEmptyView;
@@ -44,9 +44,14 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle state) {
         super.onCreate(state);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.pannel_fragment);
         showLoading();
         engine.getHostList();
+    }
+
+    @Override
+    protected MvpPresenter createPresenter() {
+        return null;
     }
 
     @Override
@@ -142,4 +147,5 @@ public class MainActivity extends BaseActivity {
     public void showCurrentHost() {
         startActivity(new Intent(this, ListHostsActivity.class));
     }
+    */
 }

@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import com.hannesdorfmann.mosby.dagger1.Dagger1MosbyFragment;
+import com.hannesdorfmann.mosby.dagger1.viewstate.Dagger1MvpViewStateFragment;
+import com.hannesdorfmann.mosby.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.snail.hostseditor.App;
 import com.squareup.otto.Bus;
 
@@ -15,7 +17,7 @@ import dagger.ObjectGraph;
 /**
  * All fragments should extend this for dependency injection.
  */
-public class BaseFragment extends Dagger1MosbyFragment {
+public  abstract class BaseFragment extends Dagger1MvpViewStateFragment {
 
     @Inject
     protected Bus mBus;
@@ -58,5 +60,20 @@ public class BaseFragment extends Dagger1MosbyFragment {
         mApp = null;
         mActivity = null;
         super.onDetach();
+    }
+
+    @Override
+    public ViewState createViewState() {
+        return null;
+    }
+
+    @Override
+    public void onNewViewStateInstance() {
+
+    }
+
+    @Override
+    protected MvpPresenter createPresenter() {
+        return null;
     }
 }

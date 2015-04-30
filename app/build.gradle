@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId 'com.snail.hostseditor'
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion 21
         versionCode 5
         versionName '1.4'
@@ -31,10 +31,12 @@ android {
     }
 }
 
+def googleSupportLibVersion = '22.1.1'
+
 dependencies {
     //mosby core lib use
     //--include butterknife,icepick,fragmentargs
-    compile 'com.hannesdorfmann.mosby:core:1.0.0'
+    //下方使用相关库会自动添加该依赖 compile 'com.hannesdorfmann.mosby:core:1.0.0'
     //--need processor to process annotation
     //onSaveInstance时保存相关信息
     apt 'frankiesardo:icepick-processor:3.0.2'
@@ -42,26 +44,26 @@ dependencies {
     apt 'com.hannesdorfmann.fragmentargs:processor:2.0.1'
 
     //--mosby core-dagger1 use
-    compile 'com.hannesdorfmann.mosby:core-dagger1:1.0.0'
+    compile 'com.hannesdorfmann.mosby:viewstate-dagger1:1.0.0'
     apt 'com.squareup.dagger:dagger-compiler:1.2.2'
 
+    compile 'com.hannesdorfmann.parcelableplease:annotation:1.0.1'
+    apt 'com.hannesdorfmann.parcelableplease:processor:1.0.1'
 
+    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
 
-
+    compile 'com.hannesdorfmann.annotatedadapter:annotation:1.0.0'
+    apt 'com.hannesdorfmann.annotatedadapter:processor:1.0.0'
+    compile 'com.hannesdorfmann.annotatedadapter:support-recyclerview:1.0.0'
 
     // Commons IO
     compile 'commons-io:commons-io:2.4'
 
-    // Dagger
-//    compile 'com.squareup.dagger:dagger:1.2.2'
-
-    compile 'com.android.support:support-v4:21.0.+'
-    compile 'com.android.support:appcompat-v7:21.0+'
-    compile "com.android.support:recyclerview-v7:21.0.+"
-    compile "com.android.support:cardview-v7:21.0.+"
-
-    // Butterknife
-//    compile 'com.jakewharton:butterknife:6.0.0'
+    compile 'com.android.support:support-v4:' + googleSupportLibVersion
+    compile 'com.android.support:appcompat-v7:' + googleSupportLibVersion
+    compile "com.android.support:recyclerview-v7:" + googleSupportLibVersion
+    compile "com.android.support:cardview-v7:" + googleSupportLibVersion
 
     // Logging
     compile 'com.jakewharton.timber:timber:2.5.0'
@@ -70,7 +72,7 @@ dependencies {
     compile 'com.squareup:otto:1.3.5'
 
     //volley plus
-    compile 'dev.dworks.libs:volleyplus:+'
+    compile 'dev.dworks.libs:volleyplus:0.1.2'
 
     // Other jars (RootTools)
     compile fileTree(dir: 'libs', include: '*.jar')

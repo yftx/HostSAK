@@ -1,6 +1,6 @@
 package com.snail.hostseditor.event;
 
-import com.snail.hostseditor.ui.extend.HostType;
+import com.snail.hostseditor.model.HostType;
 
 import java.util.List;
 
