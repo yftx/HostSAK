@@ -33,8 +33,8 @@ import dagger.Provides;
                 ReplaceHostAsync.class,
                 PannelActivity.class,
                 NetEngine.class,
-                PannelPresenter.class,
                 PannelFragment.class,
+                PannelPresenter.class,
         },
         includes = {
                 NetModule.class,

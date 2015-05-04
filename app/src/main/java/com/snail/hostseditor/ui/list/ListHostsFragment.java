@@ -266,7 +266,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
 
     private void runGenericTask(Class<? extends GenericTaskAsync> clazz, Host[] hosts, boolean flagMsg) {
         GenericTaskAsync task = objectGraph.get(clazz);
-        task.init(mActivity.getApplicationContext(), flagMsg);
+        task.init(flagMsg);
         task.execute(hosts);
     }
 

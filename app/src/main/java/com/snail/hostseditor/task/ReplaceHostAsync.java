@@ -13,7 +13,6 @@ public class ReplaceHostAsync extends GenericTaskAsync {
 
     @Override
     protected void process(Host... params) {
-
         List<Host> hosts = mHostsManager.getHosts(false);
         hosts.clear();
         Collections.addAll(hosts, params);

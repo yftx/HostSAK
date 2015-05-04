@@ -1,8 +1,14 @@
 package com.snail.hostseditor.pannel;
 
+import com.hannesdorfmann.mosby.dagger1.Injector;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.snail.hostseditor.App;
 import com.snail.hostseditor.event.LoadHostTypeEvent;
+import com.snail.hostseditor.event.LoadHostsEvent;
+import com.snail.hostseditor.event.TaskCompletedEvent;
 import com.snail.hostseditor.model.HostType;
+import com.snail.hostseditor.task.GenericTaskAsync;
+import com.snail.hostseditor.task.ReplaceHostAsync;
 import com.snail.hostseditor.ui.extend.NetEngine;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -23,6 +29,12 @@ public class PannelPresenter extends MvpBasePresenter<PannelView> {
     NetEngine mEngine;
     @Inject
     Bus mBus;
+
+    @Inject
+    Injector mInjector;
+
+    @Inject
+    App mApp;
 
     @Inject
     public PannelPresenter() {
@@ -57,5 +69,37 @@ public class PannelPresenter extends MvpBasePresenter<PannelView> {
             getView().setData(mHostTypes);
             getView().showContent();
         }
+    }
+
+    /**
+     * 改变当前的host
+     */
+    public void alertReplaceHost(HostType hostType) {
+        if (hostType == null) return;
+        if (isViewAttached())
+            getView().showAlertReplaceHostDialog(hostType);
+    }
+
+    public void replaceHost(HostType hostType) {
+        if (isViewAttached())
+            getView().showReplacingHostDialog();
+        mEngine.getHost(hostType.index);
+
+
+    }
+
+    @Subscribe
+    public void replaceHost(LoadHostsEvent event) {
+        GenericTaskAsync task = mInjector.getObjectGraph().get(ReplaceHostAsync.class);
+        task.init(false);
+        task.execute(event.getHosts());
+    }
+
+    @Subscribe
+    public void onTaskFinished(TaskCompletedEvent task) {
+        if (isViewAttached())
+            getView().hideReplacingHostDialog();
+            getView().showCurrentHost();
+
     }
 }

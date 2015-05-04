@@ -1,8 +1,8 @@
 package com.snail.hostseditor.task;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
+import com.snail.hostseditor.App;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.core.HostsManager;
 import com.snail.hostseditor.event.LoadingEvent;
@@ -15,10 +15,13 @@ import timber.log.Timber;
 
 public abstract class GenericTaskAsync extends AsyncTask<Host, Void, Void> {
 
-    @Inject Bus mBus;
-    @Inject HostsManager mHostsManager;
+    @Inject
+    Bus mBus;
+    @Inject
+    HostsManager mHostsManager;
+    @Inject
+    App mApp;
 
-    private Context mAppContext;
     protected boolean mFlagLoadingMsg; // which loading message (between 2) to display: (singular/plural) - (add/edit).
 
     @Override
@@ -30,7 +33,7 @@ public abstract class GenericTaskAsync extends AsyncTask<Host, Void, Void> {
     @Override
     protected Void doInBackground(Host... params) {
         process(params);
-        if (!mHostsManager.saveHosts(mAppContext)) {
+        if (!mHostsManager.saveHosts(mApp)) {
             cancel(false);
         }
         return null;
@@ -50,8 +53,7 @@ public abstract class GenericTaskAsync extends AsyncTask<Host, Void, Void> {
         mBus.post(new TaskCompletedEvent(getClass().getSimpleName(), false));
     }
 
-    public void init(Context appContext, boolean flagMsg) {
-        mAppContext = appContext;
+    public void init(boolean flagMsg) {
         mFlagLoadingMsg = flagMsg;
     }
 

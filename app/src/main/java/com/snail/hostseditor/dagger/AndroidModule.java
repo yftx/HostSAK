@@ -1,5 +1,6 @@
 package com.snail.hostseditor.dagger;
 
+import com.hannesdorfmann.mosby.dagger1.Injector;
 import com.snail.hostseditor.App;
 
 import javax.inject.Singleton;
@@ -25,4 +26,12 @@ public class AndroidModule {
     App provideApp() {
         return mApp;
     }
+
+    @Provides
+    @Singleton
+    Injector provideInjector() {
+        return mApp;
+    }
+
+
 }
