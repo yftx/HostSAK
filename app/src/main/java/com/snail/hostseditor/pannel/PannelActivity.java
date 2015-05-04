@@ -26,9 +26,8 @@ public class PannelActivity extends Dagger1MosbyActivity {
                     .replace(android.R.id.content, new PannelFragment(), PANNEL_FRAGMENT_TAG)
                     .commit();
         }
-
-
     }
+
     /*    @InjectView(R.id.list)
     RecyclerView mList;
     @InjectView(android.R.id.empty)

@@ -3,9 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/view_loading" />
-
-    <include layout="@layout/view_error" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/contentView"
@@ -19,5 +16,8 @@
              />
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <include layout="@layout/view_loading" />
+
+    <include layout="@layout/view_error" />
 
 </FrameLayout>

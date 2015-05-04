@@ -57,17 +57,5 @@ public class PannelPresenter extends MvpBasePresenter<PannelView> {
             getView().setData(mHostTypes);
             getView().showContent();
         }
-/*        mAdapter = new HostTypeAdapter(mHostTypes, getLayoutInflater(), new HostTypeAdapter.OnClickItemListener() {
-            @Override
-            public void onClickItem(HostType hostType) {
-                changeHost(hostType);
-            }
-        });
-        mLayoutManager = new LinearLayoutManager(this);
-        mList.setLayoutManager(mLayoutManager);
-        mList.setAdapter(mAdapter);
-        showContent();*/
     }
-
-
 }
