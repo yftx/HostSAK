@@ -3,7 +3,7 @@ package com.snail.hostseditor.task;
 import android.os.AsyncTask;
 
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 import com.snail.hostseditor.core.HostsManager;
 import com.snail.hostseditor.event.LoadingEvent;
 import com.snail.hostseditor.event.RefreshHostsEvent;

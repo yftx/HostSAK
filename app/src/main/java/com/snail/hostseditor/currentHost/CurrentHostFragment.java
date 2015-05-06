@@ -8,8 +8,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingFragmentLceViewState;
 import com.snail.hostseditor.BaseFragment;
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
-import com.snail.hostseditor.ui.list.ListHostsAdapter;
+import com.snail.hostseditor.model.Host;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class CurrentHostFragment
     CurrentHostPresenter mPresenter;
 
     @Inject
-    ListHostsAdapter mAdapter;
+    CurrentHostAdapter mAdapter;
 
     @InjectView(R.id.contentView)
     ListView mListView;

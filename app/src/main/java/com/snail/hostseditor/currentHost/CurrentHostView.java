@@ -1,7 +1,7 @@
 package com.snail.hostseditor.currentHost;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.snail.hostseditor.ui.widget;
+package com.snail.hostseditor.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

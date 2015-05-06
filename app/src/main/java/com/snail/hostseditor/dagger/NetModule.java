@@ -1,7 +1,7 @@
 package com.snail.hostseditor.dagger;
 
 import com.snail.hostseditor.App;
-import com.snail.hostseditor.ui.extend.NetEngine;
+import com.snail.hostseditor.core.NetEngine;
 
 import javax.inject.Singleton;
 

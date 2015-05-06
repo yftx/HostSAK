@@ -1,17 +1,15 @@
-package com.snail.hostseditor.ui.widget;
+package com.snail.hostseditor.widget;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 
 import java.util.Locale;
 

@@ -1,7 +1,7 @@
 package com.snail.hostseditor.task;
 
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 
 import java.util.Collections;
 import java.util.List;

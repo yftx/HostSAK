@@ -2,6 +2,7 @@ package com.snail.hostseditor.core;
 
 import android.content.Context;
 
+import com.snail.hostseditor.model.Host;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
@@ -137,25 +138,6 @@ public class HostsManager {
             RootTools.remount(hostsFilePath, MOUNT_TYPE_RO);
         }
         return true;
-    }
-
-    /**
-     * Returns a list of hosts matching the constraint parameter.
-     */
-    public List<Host> filterHosts(CharSequence constraint) {
-        List<Host> all = getHosts(false);
-        List<Host> hosts = new ArrayList<Host>();
-
-        for (Host host : all) {
-            if (host.isValid()) {
-                if (host.getIp().contains(constraint)
-                        || host.getHostName().contains(constraint)
-                        || (host.getComment() != null && host.getComment().contains(constraint))) {
-                    hosts.add(host);
-                }
-            }
-        }
-        return hosts;
     }
 
     /**

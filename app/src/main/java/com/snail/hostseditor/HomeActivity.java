@@ -20,6 +20,8 @@ public class HomeActivity extends Dagger1MosbyActivity {
     public static final String PANEL_FRAGMENT_TAG = "panel_fragment_tag";
     public static final String CURRENT_HOST_FRAGMENT_TAG = "current_host_fragment_tag";
 
+    private static boolean DEBUG = false;
+
     @Inject
     Bus mBus;
 
@@ -29,7 +31,8 @@ public class HomeActivity extends Dagger1MosbyActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity_dummy_layout);
-        FragmentManager.enableDebugLogging(true);
+        if (DEBUG)
+            FragmentManager.enableDebugLogging(true);
         mBus.register(this);
         mFragmentManager = getSupportFragmentManager();
 

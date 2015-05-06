@@ -1,7 +1,6 @@
-package com.snail.hostseditor.ui.extend;
+package com.snail.hostseditor.core;
 
 import android.content.Context;
-import android.os.SystemClock;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -10,7 +9,7 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.snail.hostseditor.App;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 import com.snail.hostseditor.event.LoadHostTypeEvent;
 import com.snail.hostseditor.event.LoadHostsEvent;
 import com.snail.hostseditor.model.HostType;

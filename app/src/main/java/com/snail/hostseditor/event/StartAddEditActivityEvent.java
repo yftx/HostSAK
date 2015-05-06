@@ -1,6 +1,6 @@
 package com.snail.hostseditor.event;
 
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 
 public class StartAddEditActivityEvent {
 

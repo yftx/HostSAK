@@ -2,75 +2,14 @@
 <resources>
     <string name="app_name">Snail Host</string>
 
-    <!-- Action bar menu -->
-    <string name="action_search">搜索</string>
-    <string name="action_search_results">搜索结果</string>
-    <string name="action_add_host">添加host</string>
-    <string name="action_show_current_host">显示当前的host</string>
-    <string name="action_reload">重新加载host文件</string>
-    <string name="action_select_all">选取所有host文件</string>
-    <string name="action_about">关于</string>
-
-    <!-- Add/Edit host -->
-    <string name="add_host_title">添加host名字</string>
-    <string name="edit_host_title">Edit Hostname</string>
-    <string name="add_edit_ip">IP Address:</string>
-    <string name="add_edit_name">Hostname:</string>
-    <string name="add_edit_comment">Comment:</string>
-    <string name="add_edit_error_title">Error</string>
-    <string name="add_edit_error_ip">IP address is invalid</string>
-    <string name="add_edit_error_hostname">Hostname is invalid</string>
-    <string name="add_edit_error_ok">OK</string>
-
-    <!-- Add/Edit host menu -->
-    <string name="action_add_comment">Add comment</string>
-    <string name="action_remove_comment">Remove comment</string>
-
-    <!-- List hosts (empty layout) -->
-    <string name="list_empty">No \'hosts\' records found.</string>
-    <string name="list_empty_desc">We couldn\'t find any host entry.\nFeel free to add some!</string>
-
-    <!-- List hosts (contextual menu) -->
-    <string name="list_menu_selected">%d selected</string>
-    <string name="list_menu_edit">Edit</string>
-    <string name="list_menu_delete">Delete</string>
-    <string name="list_menu_toggle">Toggle</string>
-
-    <!-- List hosts error dialog -->
-    <string name="list_error_title">Error</string>
-    <string name="list_error_content">Can\'t edit hosts file, make sure you have root/SuperUser rights.\nThe app should be allowed to request super user access.</string>
-    <string name="list_error_ok">OK</string>
-
-    <!-- Delete confirmation dialog -->
-    <string name="delete_dialog_title">Delete</string>
-    <plurals name="delete_dialog_content">
-        <item quantity="one">Delete selected host?</item>
-        <item quantity="other">Delete selected hosts?</item>
-    </plurals>
-    <string name="delete_dialog_cancel">Cancel</string>
-    <string name="delete_dialog_delete">Delete</string>
-
     <!-- Loading messages -->
     <string name="loading_hosts">Loading host entries</string>
     <string name="loading_add">Adding entry</string>
     <string name="loading_edit">Editing entry</string>
-    <string name="loading_remove_single">Removing entry</string>
-    <string name="loading_remove_multiple">Removing entries</string>
-    <string name="loading_toggle_single">Toggling entry</string>
-    <string name="loading_toggle_multiple">Toggling entries</string>
-
-    <!-- About -->
-    <string name="about_title">Snail Host</string>
-    <string name="about_text">快速修改host\n免商店开发团队出品</string>
-    <string name="about_author"><a href="http://app.snail.com">http://app.snail.com</a></string>
 
     <string name="ok">替换</string>
     <string name="cancel">取消</string>
     <string name="warn_title">切换host</string>
     <string name="warn_content">！！！！切换host会将本地已有host全部覆盖,覆盖了你别来找我啊。！！！</string>
     <string name="replace_content">切换中，请勿操作</string>
-
-
-
-
 </resources>

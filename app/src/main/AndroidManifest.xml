@@ -26,9 +26,6 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.snail.hostseditor.ui.list.ListHostsActivity"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -37,6 +34,5 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.snail.hostseditor.ui.addedit.AddEditHostActivity" />
     </application>
 </manifest>

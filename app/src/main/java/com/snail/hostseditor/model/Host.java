@@ -1,4 +1,4 @@
-package com.snail.hostseditor.core;
+package com.snail.hostseditor.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -213,10 +213,7 @@ public class Host implements Parcelable {
         if (mIsCommented != other.mIsCommented) {
             return false;
         }
-        if (mIsValid != other.mIsValid) {
-            return false;
-        }
-        return true;
+        return mIsValid == other.mIsValid;
     }
 
 

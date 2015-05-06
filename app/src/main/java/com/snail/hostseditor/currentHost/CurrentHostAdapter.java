@@ -1,4 +1,4 @@
-package com.snail.hostseditor.ui.list;
+package com.snail.hostseditor.currentHost;
 
 import android.content.Context;
 
@@ -6,16 +6,16 @@ import com.hannesdorfmann.annotatedadapter.AbsListViewAnnotatedAdapter;
 import com.hannesdorfmann.annotatedadapter.annotation.Field;
 import com.hannesdorfmann.annotatedadapter.annotation.ViewType;
 import com.snail.hostseditor.R;
-import com.snail.hostseditor.core.Host;
+import com.snail.hostseditor.model.Host;
 import com.snail.hostseditor.core.util.ThreadPreconditions;
-import com.snail.hostseditor.ui.widget.CheckableRelativeLayout;
+import com.snail.hostseditor.widget.CheckableRelativeLayout;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class ListHostsAdapter extends AbsListViewAnnotatedAdapter implements ListHostsAdapterBinder {
+public class CurrentHostAdapter extends AbsListViewAnnotatedAdapter implements CurrentHostAdapterBinder {
 
     @ViewType(
             layout = R.layout.current_host_item,
@@ -32,7 +32,7 @@ public class ListHostsAdapter extends AbsListViewAnnotatedAdapter implements Lis
     private List<Host> mHosts = Collections.emptyList();
 
     @Inject
-    protected ListHostsAdapter(Context context) {
+    protected CurrentHostAdapter(Context context) {
         super(context);
     }
 
@@ -66,7 +66,7 @@ public class ListHostsAdapter extends AbsListViewAnnotatedAdapter implements Lis
     }
 
     @Override
-    public void bindViewHolder(ListHostsAdapterHolders.TYPEViewHolder vh, int position) {
+    public void bindViewHolder(CurrentHostAdapterHolders.TYPEViewHolder vh, int position) {
         Host host = getItem(position);
         vh.item.drawItem(host);
     }
