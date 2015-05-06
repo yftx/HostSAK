@@ -14,7 +14,7 @@
         android:name="com.snail.hostseditor.ui.list.ListHostsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/list_hosts_fragment"/>
+        tools:layout="@layout/current_hosts_fragment"/>
 
     <!-- Loading (progress bar) -->
     <ProgressBar

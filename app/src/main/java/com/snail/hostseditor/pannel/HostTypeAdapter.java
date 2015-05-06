@@ -17,10 +17,8 @@ import java.util.List;
  */
 
 public class HostTypeAdapter extends SupportAnnotatedAdapter implements HostTypeAdapterBinder {
-
-
     public interface HostTypeClickedListener {
-         void onHostTypeClick(HostTypeAdapterHolders.HostTypeItemViewHolder vh, HostType hostType);
+        void onHostTypeClick(HostTypeAdapterHolders.HostTypeItemViewHolder vh, HostType hostType);
     }
 
     protected List<HostType> items;
@@ -71,70 +69,6 @@ public class HostTypeAdapter extends SupportAnnotatedAdapter implements HostType
             }
         });
     }
-
-
 }
 
-
-
-
-/*
-
-public class HostTypeAdapter extends RecyclerView.Adapter<HostTypeAdapter.ViewHolder> {
-    public interface HostTypeClickedListener{
-        public void onHostTypeClick();
-    }
-
-
-
-
-    List<HostType> datas;
-    LayoutInflater inflater;
-    OnClickItemListener onClickItemListener;
-
-    HostTypeAdapter(List<HostType> datas, LayoutInflater inflater, OnClickItemListener onClickItemListener) {
-        this.datas = datas;
-        this.inflater = inflater;
-        this.onClickItemListener = onClickItemListener;
-    }
-
-    interface OnClickItemListener {
-        public void onClickItem(HostType hostType);
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        @InjectView(R.id.host_type)
-        public TextView hostType;
-
-        public ViewHolder(View v) {
-            super(v);
-            ButterKnife.inject(this,v);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClickItemListener.onClickItem(datas.get(getPosition()));
-                }
-            });
-        }
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.host_list_item, parent, false);
-        return new ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.hostType.setText(datas.get(position).name);
-    }
-
-    @Override
-    public int getItemCount() {
-        return datas.size();
-    }
-}
-
-*/
 

@@ -1,5 +1,7 @@
 package com.snail.hostseditor.dagger;
 
+import android.content.Context;
+
 import com.hannesdorfmann.mosby.dagger1.Injector;
 import com.snail.hostseditor.App;
 
@@ -30,6 +32,12 @@ public class AndroidModule {
     @Provides
     @Singleton
     Injector provideInjector() {
+        return mApp;
+    }
+
+    @Provides
+    @Singleton
+    Context provideContext() {
         return mApp;
     }
 

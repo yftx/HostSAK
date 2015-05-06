@@ -26,7 +26,7 @@ import com.snail.hostseditor.task.GenericTaskAsync;
 import com.snail.hostseditor.task.ListHostsAsync;
 import com.snail.hostseditor.task.RemoveHostsAsync;
 import com.snail.hostseditor.task.ToggleHostsAsync;
-import com.snail.hostseditor.ui.BaseFragment;
+import com.snail.hostseditor.BaseFragment;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -38,8 +38,8 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 import timber.log.Timber;
 
-public class ListHostsFragment extends BaseFragment implements OnItemClickListener, OnItemLongClickListener {
-
+public class ListHostsFragment{
+/*
     @Inject
     ListHostsAdapter mAdapter;
     @InjectView(R.id.listHosts)
@@ -69,7 +69,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.list_hosts_fragment;
+        return R.layout.current_hosts_fragment;
     }
 
     @Override
@@ -118,7 +118,7 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
     public void onHostsRefreshed(RefreshHostsEvent hosts) {
         Timber.d("Refreshing listview");
         finishActionMode();
-        mAdapter.updateHosts(hosts.hosts);
+        mAdapter.setData(hosts.hosts);
         mBus.post(new LoadingEvent());
     }
 
@@ -274,5 +274,5 @@ public class ListHostsFragment extends BaseFragment implements OnItemClickListen
         if (mMode != null) {
             mMode.finish();
         }
-    }
+    }*/
 }

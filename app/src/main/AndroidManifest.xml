@@ -29,7 +29,7 @@
             android:name="com.snail.hostseditor.ui.list.ListHostsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".pannel.PannelActivity"
+            android:name=".HomeActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

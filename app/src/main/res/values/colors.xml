@@ -9,4 +9,6 @@
     <color name="white">#ffffffff</color>
     <color name="purple">#9933cc</color>
     <color name="black">@android:color/black</color>
+    <color name="accent">#FFC107</color>
+    <color name="accent_dark">#FFA000</color>
 </resources>

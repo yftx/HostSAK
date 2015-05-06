@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.snail.hostseditor.ui.widget.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/current_host_container"
     style="@style/ListItemStyle"
     android:layout_height="@dimen/current_host_item_height">
 

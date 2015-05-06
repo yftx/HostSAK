@@ -2,7 +2,6 @@ package com.snail.hostseditor.pannel;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
@@ -10,32 +9,34 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.hannesdorfmann.mosby.dagger1.viewstate.lce.Dagger1MvpLceViewStateFragment;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingFragmentLceViewState;
+import com.snail.hostseditor.BaseFragment;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.model.HostType;
-import com.snail.hostseditor.ui.list.ListHostsActivity;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by yftx on 4/21/15.
  */
-public class PannelFragment
-        extends Dagger1MvpLceViewStateFragment<SwipeRefreshLayout, List<HostType>, PannelView, PannelPresenter>
-        implements HostTypeAdapter.HostTypeClickedListener, PannelView, SwipeRefreshLayout.OnRefreshListener {
+public class PanelFragment
+        extends BaseFragment<SwipeRefreshLayout, List<HostType>, PanelView, PanelPresenter>
+        implements HostTypeAdapter.HostTypeClickedListener, PanelView, SwipeRefreshLayout.OnRefreshListener {
     @InjectView(R.id.list)
     RecyclerView mList;
 
     HostTypeAdapter mAdapter;
 
+    ProgressDialog progressDialog;
+
     @Inject
-    PannelPresenter mPannelPresenter;
+    PanelPresenter mPanelPresenter;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -53,8 +54,8 @@ public class PannelFragment
     }
 
     @Override
-    public LceViewState<List<HostType>, PannelView> createViewState() {
-        return new RetainingFragmentLceViewState<List<HostType>, PannelView>(this);
+    public LceViewState<List<HostType>, PanelView> createViewState() {
+        return new RetainingFragmentLceViewState<List<HostType>, PanelView>(this);
     }
 
     @Override
@@ -64,8 +65,8 @@ public class PannelFragment
 
 
     @Override
-    protected PannelPresenter createPresenter() {
-        return mPannelPresenter;
+    protected PanelPresenter createPresenter() {
+        return mPanelPresenter;
     }
 
     @Override
@@ -80,10 +81,6 @@ public class PannelFragment
         contentView.setRefreshing(false);
     }
 
-    @Override
-    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return null;
-    }
 
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
@@ -109,12 +106,6 @@ public class PannelFragment
     @Override
     public void loadData(boolean b) {
         presenter.loadData(b);
-    }
-
-
-    @Override
-    protected void injectDependencies() {
-        getObjectGraph().inject(this);
     }
 
     @Override
@@ -145,7 +136,6 @@ public class PannelFragment
         dialog.show();
     }
 
-    ProgressDialog progressDialog;
 
     @Override
     public void showReplacingHostDialog() {
@@ -161,8 +151,8 @@ public class PannelFragment
             progressDialog.dismiss();
     }
 
-    @Override
-    public void showCurrentHost() {
-        startActivity(new Intent(getActivity(), ListHostsActivity.class));
+    @OnClick(R.id.show_current_host)
+    public void onClickShowCurrentHost() {
+        presenter.showCurrentHost();
     }
 }

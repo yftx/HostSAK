@@ -1,13 +1,10 @@
 package com.snail.hostseditor.ui.list;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 
+import com.hannesdorfmann.annotatedadapter.AbsListViewAnnotatedAdapter;
+import com.hannesdorfmann.annotatedadapter.annotation.Field;
+import com.hannesdorfmann.annotatedadapter.annotation.ViewType;
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.core.util.ThreadPreconditions;
@@ -18,20 +15,28 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class ListHostsAdapter extends BaseAdapter implements Filterable {
+public class ListHostsAdapter extends AbsListViewAnnotatedAdapter implements ListHostsAdapterBinder {
 
-    @Inject
-    ListHostsSearchFilter mSearchFilter;
+    @ViewType(
+            layout = R.layout.current_host_item,
+            fields = {
+                    @Field(
+                            id = R.id.current_host_container,
+                            name = "item",
+                            type = CheckableRelativeLayout.class
+                    )
+            }
+    )
+    public static final int TYPE = 0;
 
     private List<Host> mHosts = Collections.emptyList();
-    private Context mAppContext;
 
-
-    public void init(Context appContext) {
-        mAppContext = appContext;
+    @Inject
+    protected ListHostsAdapter(Context context) {
+        super(context);
     }
 
-    public void updateHosts(List<Host> hosts) {
+    public void setData(List<Host> hosts) {
         ThreadPreconditions.checkOnMainThread();
         if (hosts == null) {
             mHosts = Collections.emptyList();
@@ -56,19 +61,13 @@ public class ListHostsAdapter extends BaseAdapter implements Filterable {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(mAppContext).inflate(R.layout.current_host_item, parent, false);
-        }
-
-        Host host = getItem(position);
-        ((CheckableRelativeLayout) convertView).drawItem(host);
-        return convertView;
+    public List<Host> getItems() {
+        return mHosts;
     }
 
     @Override
-    public Filter getFilter() {
-        return mSearchFilter;
+    public void bindViewHolder(ListHostsAdapterHolders.TYPEViewHolder vh, int position) {
+        Host host = getItem(position);
+        vh.item.drawItem(host);
     }
 }

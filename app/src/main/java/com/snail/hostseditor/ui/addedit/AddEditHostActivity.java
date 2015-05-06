@@ -16,7 +16,7 @@ import com.snail.hostseditor.ui.list.ListHostsActivity;
 import com.squareup.otto.Subscribe;
 
 public class AddEditHostActivity extends BaseActivity {
-
+/*
     public static final String EXTRA_HOST_ORIGINAL = "hostOriginal"; // useful in Edit mode, this is the original Host entry before being edited.
     public static final String EXTRA_HOST_MODIFIED = "hostModified"; // the new Host entry, after having been edited.
 
@@ -104,5 +104,5 @@ public class AddEditHostActivity extends BaseActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(titleRes);
-    }
+    }*/
 }

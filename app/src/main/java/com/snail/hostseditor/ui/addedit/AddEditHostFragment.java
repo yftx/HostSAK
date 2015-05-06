@@ -14,15 +14,15 @@ import com.snail.hostseditor.R;
 import com.snail.hostseditor.core.Host;
 import com.snail.hostseditor.core.util.InetAddresses;
 import com.snail.hostseditor.event.CreatedHostEvent;
-import com.snail.hostseditor.ui.BaseFragment;
+import com.snail.hostseditor.BaseFragment;
 
 import java.util.regex.Pattern;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class AddEditHostFragment extends BaseFragment {
-
+public class AddEditHostFragment  {
+/*
     public static final String TAG = AddEditHostFragment.class.getSimpleName();
 
     private static final String ARG_HOST = "mInitialHost";
@@ -152,5 +152,5 @@ public class AddEditHostFragment extends BaseFragment {
             error = R.string.add_edit_error_ip;
         }
         return error;
-    }
+    }*/
 }

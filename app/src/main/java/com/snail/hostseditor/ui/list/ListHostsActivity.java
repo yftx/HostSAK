@@ -27,7 +27,7 @@ import butterknife.InjectView;
 import timber.log.Timber;
 
 public class ListHostsActivity extends BaseActivity {
-
+/*
     private static final int REQUESTCODE_ADDEDIT_ACTIVITY = 1;
     private static final String STR_EMPTY = "";
     private static final String INSTANCE_STATE_LOADING = "loading";
@@ -55,9 +55,6 @@ public class ListHostsActivity extends BaseActivity {
             onLoadingEvent(new LoadingEvent(true, R.string.loading_hosts));
         }
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -222,5 +219,5 @@ public class ListHostsActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         AboutDialogFragment dialog = new AboutDialogFragment();
         dialog.show(fm, AboutDialogFragment.TAG);
-    }
+    }*/
 }
