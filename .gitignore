@@ -16,7 +16,6 @@ build/
 *.iml
 
 # Android built application files
-*.apk
 *.ap_
 
 # Files for the dex VM
