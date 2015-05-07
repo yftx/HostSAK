@@ -1,3 +1,3 @@
 language: android
 script:
-	- ./gradlew build
+		./gradlew build
