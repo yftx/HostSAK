@@ -4,6 +4,9 @@ script:
 branches:
         only:
             master
+#找不到appcompact-v7时需要添加以下内容。
+#文档内容参见下方
+#http://docs.travis-ci.com/user/languages/android/
 android:
     components:
         - extra-android-m2repository
