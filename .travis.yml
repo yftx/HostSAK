@@ -1,3 +1,10 @@
 language: android
 script:
- ./gradlew build
+    ./gradlew build
+branches:
+        only:
+            master
+android:
+    components:
+        - extra-android-m2repository
+        - android-sdk-license-.+
