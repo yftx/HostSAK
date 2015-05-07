@@ -10,4 +10,15 @@ buildscript {
     }
 }
 
-
+allprojects {
+  repositories {
+    jcenter()
+    maven {
+      // For icepick
+      url 'https://clojars.org/repo/'
+    }
+    maven {
+      url 'https://jitpack.io'
+    }
+  }
+}
