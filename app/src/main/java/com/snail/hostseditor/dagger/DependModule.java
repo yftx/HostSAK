@@ -8,8 +8,8 @@ import com.snail.hostseditor.currentHost.CurrentHostPresenter;
 import com.snail.hostseditor.event.ShowCurrentHostEvent;
 import com.snail.hostseditor.pannel.PanelFragment;
 import com.snail.hostseditor.pannel.PanelPresenter;
-import com.snail.hostseditor.task.ListHostsAsync;
-import com.snail.hostseditor.task.ReplaceHostAsync;
+import com.snail.hostseditor.core.task.ListHostsAsync;
+import com.snail.hostseditor.core.task.ReplaceHostAsync;
 import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
@@ -34,7 +34,7 @@ import dagger.Provides;
                 NetModule.class,
         }
 )
-public class HostsEditorModule {
+public class DependModule {
 
     @Provides
     @Singleton

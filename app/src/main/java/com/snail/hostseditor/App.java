@@ -6,7 +6,7 @@ import android.content.Context;
 import com.hannesdorfmann.mosby.dagger1.Injector;
 import com.snail.hostseditor.core.logging.ReleaseLogTree;
 import com.snail.hostseditor.dagger.AndroidModule;
-import com.snail.hostseditor.dagger.HostsEditorModule;
+import com.snail.hostseditor.dagger.DependModule;
 import com.snail.hostseditor.dagger.NetModule;
 
 import java.util.Arrays;
@@ -54,7 +54,7 @@ public class App extends Application implements Injector{
         return Arrays.asList(
                 new AndroidModule(this),
                 new NetModule(),
-                new HostsEditorModule()
+                new DependModule()
         );
     }
 

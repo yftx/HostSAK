@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListItemStyle"
+    android:id="@+id/item_container"
     >
-
     <TextView
         android:paddingLeft="@dimen/list_item_content_padding"
         android:id="@+id/host_type"

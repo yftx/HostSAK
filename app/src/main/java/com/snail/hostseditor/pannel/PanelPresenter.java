@@ -6,8 +6,8 @@ import com.snail.hostseditor.event.LoadHostsEvent;
 import com.snail.hostseditor.event.ShowCurrentHostEvent;
 import com.snail.hostseditor.event.TaskCompletedEvent;
 import com.snail.hostseditor.model.HostType;
-import com.snail.hostseditor.task.GenericTaskAsync;
-import com.snail.hostseditor.task.ReplaceHostAsync;
+import com.snail.hostseditor.core.task.GenericTaskAsync;
+import com.snail.hostseditor.core.task.ReplaceHostAsync;
 import com.snail.hostseditor.core.NetEngine;
 import com.squareup.otto.Subscribe;
 

@@ -1,66 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.snail.hostseditor.widget.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/current_host_container"
     style="@style/ListItemStyle"
-    android:layout_height="@dimen/current_host_item_height">
+    android:layout_height="54dp"
+    android:id="@+id/item_container"
+    >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/left_scope"
-        android:layout_marginLeft="@dimen/list_item_content_padding"
-        android:minWidth="200dp"
-        >
-        <!-- Left part (IP) -->
-        <TextView
-            android:id="@+id/hostItemIp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:focusable="false"
-            android:textColor="@color/black"
-            android:textIsSelectable="false"
-            android:textSize="14sp"
-            tools:text="127.0.0.1" />
-
-
-        <!-- Hostname -->
-        <TextView
-            android:id="@+id/hostItemHostname"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:focusable="false"
-            android:textColor="@color/black"
-            android:textIsSelectable="false"
-            android:textSize="16sp"
-            tools:text="localhost" />
-
-    </LinearLayout>
-
-    <!-- Comment -->
     <TextView
-        android:id="@+id/hostItemComment"
+        android:id="@+id/ip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:focusable="false"
-        android:textSize="12sp"
-        android:visibility="gone"
-        tools:text="#comment"
-        tools:visibility="visible" />
+        android:padding="@dimen/list_item_content_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/black"
+        tools:text="127.0.0.1" />
 
-    <!-- Right part (checkbox) -->
-    <com.snail.hostseditor.widget.InertCheckBox
-        android:id="@+id/hostItemCheckbox"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:padding="@dimen/list_item_content_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/black"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:focusable="false" />
+        android:layout_gravity="bottom"
+        tools:text="localhost" />
+</android.support.v7.widget.CardView>
 
 
-</com.snail.hostseditor.widget.CheckableRelativeLayout>

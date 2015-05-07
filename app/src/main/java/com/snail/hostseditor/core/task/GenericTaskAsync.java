@@ -1,4 +1,4 @@
-package com.snail.hostseditor.task;
+package com.snail.hostseditor.core.task;
 
 import android.os.AsyncTask;
 

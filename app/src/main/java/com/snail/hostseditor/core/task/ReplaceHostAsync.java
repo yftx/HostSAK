@@ -1,4 +1,4 @@
-package com.snail.hostseditor.task;
+package com.snail.hostseditor.core.task;
 
 import com.snail.hostseditor.R;
 import com.snail.hostseditor.model.Host;

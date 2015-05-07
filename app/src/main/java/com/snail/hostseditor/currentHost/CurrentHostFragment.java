@@ -1,8 +1,9 @@
 package com.snail.hostseditor.currentHost;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
 
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingFragmentLceViewState;
@@ -20,7 +21,7 @@ import butterknife.InjectView;
  * Created by yftx on 5/4/15.
  */
 public class CurrentHostFragment
-        extends BaseFragment<ListView, List<Host>, CurrentHostView, CurrentHostPresenter>
+        extends BaseFragment<RecyclerView, List<Host>, CurrentHostView, CurrentHostPresenter>
         implements CurrentHostView {
 
     @Inject
@@ -30,12 +31,15 @@ public class CurrentHostFragment
     CurrentHostAdapter mAdapter;
 
     @InjectView(R.id.contentView)
-    ListView mListView;
+    RecyclerView mList;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mListView.setAdapter(mAdapter);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mList.setLayoutManager(layoutManager);
+        mList.setAdapter(mAdapter);
     }
 
     @Override

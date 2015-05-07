@@ -2,7 +2,7 @@ package com.snail.hostseditor.currentHost;
 
 import com.snail.hostseditor.DaggerPresenter;
 import com.snail.hostseditor.event.RefreshHostsEvent;
-import com.snail.hostseditor.task.ListHostsAsync;
+import com.snail.hostseditor.core.task.ListHostsAsync;
 import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;

@@ -1,6 +1,8 @@
 package com.snail.hostseditor.pannel;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,11 +22,16 @@ public class HostTypeAdapter extends SupportAnnotatedAdapter implements HostType
     public interface HostTypeClickedListener {
         void onHostTypeClick(HostTypeAdapterHolders.HostTypeItemViewHolder vh, HostType hostType);
     }
-
+    private int ITEM_OUTER_SIZE = 0;
     protected List<HostType> items;
 
     @ViewType(layout = R.layout.host_list_item,
             fields = {
+                    @Field(
+                            id = R.id.item_container,
+                            name = "container",
+                            type = CardView.class
+                    ),
                     @Field(
                             id = R.id.host_type,
                             name = "hostType",
@@ -37,6 +44,7 @@ public class HostTypeAdapter extends SupportAnnotatedAdapter implements HostType
     public HostTypeAdapter(Context context, HostTypeClickedListener listener) {
         super(context);
         mClickListener = listener;
+        ITEM_OUTER_SIZE = (int) context.getResources().getDimension(R.dimen.outer_margin);
     }
 
     @Override
@@ -68,6 +76,11 @@ public class HostTypeAdapter extends SupportAnnotatedAdapter implements HostType
                 mClickListener.onHostTypeClick(vh, type);
             }
         });
+
+        //当界面在最后一个的时候设置item的margin，保证美观。
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) vh.container.getLayoutParams();
+        params.setMargins(ITEM_OUTER_SIZE, ITEM_OUTER_SIZE, ITEM_OUTER_SIZE, position == getItemCount() - 1 ? ITEM_OUTER_SIZE : 0);
+        vh.container.setLayoutParams(params);
     }
 }
 
