@@ -10,9 +10,8 @@ android {
         applicationId 'com.snail.hostseditor'
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 5
-        versionName '1.4'
-        resConfig 'en'
+        versionCode 6
+        versionName '2.0'
     }
 
     compileOptions {
